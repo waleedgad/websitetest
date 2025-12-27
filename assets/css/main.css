@@ -19,11 +19,11 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Palette C — white page background */
-  --default-color: #374151; /* Palette C — default body/text color (muted dark) */
-  --heading-color: #111827; /* Palette C — primary for headings */
-  --accent-color: #6b7280; /* Palette C — accent */
-  --surface-color: #f3f4f6; /* Palette C — card/surface backgrounds */
+  --background-color: #000000; /* Dark page background */
+  --default-color: #ffffff; /* Primary body/text color (white) */
+  --heading-color: #ffffff; /* Headings in white */
+  --accent-color: #3b82f6; /* Accent color (blue) */
+  --surface-color: #0f0f0f; /* Card/surface backgrounds (dark) */
   --contrast-color: #ffffff; /* Contrast color for text on accent/dark elements */
 }
 
@@ -192,6 +192,15 @@ h6 {
   line-height: 0px;
 }
 
+/* Show site name on mobile instead of individual social icons */
+.header .header-social-links .header-name {
+  display: none;
+  color: var(--default-color);
+  font-weight: 600;
+  text-decoration: none;
+  padding-left: 6px;
+}
+
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;
@@ -203,6 +212,16 @@ h6 {
 
   .header .navmenu {
     order: 3;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header .header-social-links a {
+    display: none;
+  }
+
+  .header .header-social-links .header-name {
+    display: inline-block;
   }
 }
 
