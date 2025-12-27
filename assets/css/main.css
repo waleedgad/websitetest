@@ -147,13 +147,19 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: rgba(255, 255, 255, 0);
+  /* Glass navbar container (dark UI friendly)
+     Keep z-index low so mobile/menu overlays remain above. */
+  --header-offset: 80px; /* fallback spacing for page content */
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: transparent; /* actual visual comes from ::before */
   padding: 15px 0;
-  transition: all 0.5s;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
   z-index: 997;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-backface-visibility: hidden;
 }
 
 .header .logo {
@@ -163,6 +169,30 @@ h6 {
 .header .logo img {
   max-height: 36px;
   margin-right: 8px;
+}
+
+/* Glass surface applied through a pointer-events-free pseudo element */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  border-radius: 0;
+  /* subtle dark tint so underlying content shows through */
+  background-color: rgba(10, 14, 20, 0.45);
+  /* glass effect */
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  /* soft border + minimal glow */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 6px 18px rgba(2, 6, 10, 0.6);
+  pointer-events: none;
+  z-index: -1; /* keep behind header content */
+}
+
+/* provide page content spacing so fixed header doesn't cover it */
+.main {
+  padding-top: var(--header-offset, 80px);
 }
 
 .header .logo h1 {
@@ -223,6 +253,19 @@ h6 {
   .header .header-social-links .header-name {
     display: inline-block;
   }
+}
+
+/* Hide header and footer social icons on the homepage */
+body.index-page .header-social-links a:not(.header-name) {
+  display: none !important;
+}
+
+body.index-page .header-social-links {
+  padding-right: 0;
+}
+
+body.index-page .footer .social-links {
+  display: none !important;
 }
 
 /* Global Header on Scroll
@@ -469,7 +512,7 @@ h6 {
   }
 
   .mobile-nav-active {
-    overflow: hidden;
+    overflow: visible; /* allow overlay centering without clipping */
   }
 
   .mobile-nav-active .mobile-nav-toggle {
@@ -482,17 +525,58 @@ h6 {
     z-index: 9999;
   }
 
+  /* Centered glass-morphism mobile menu overlay */
   .mobile-nav-active .navmenu {
     position: fixed;
-    overflow: hidden;
     inset: 0;
-    background: rgba(33, 37, 41, 0.8);
-    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(8, 10, 12, 0.35); /* subtle dark tint behind panel */
+    -webkit-backdrop-filter: none; /* ensure container doesn't capture blur */
+    backdrop-filter: none;
+    z-index: 9998; /* above header (997) but below toggle (9999) */
+    transition: background-color 0.25s ease;
+    pointer-events: auto;
   }
 
   .mobile-nav-active .navmenu>ul {
     display: block;
+    position: relative; /* centered panel */
+    width: min(420px, 92%);
+    max-width: 92%;
+    max-height: min(80vh, calc(100vh - 64px));
+    overflow: auto; /* only scroll inside panel if needed */
+    padding: 28px 24px;
+    box-sizing: border-box;
+    border-radius: 14px;
+    background-color: rgba(12, 16, 20, 0.45);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 12px 40px rgba(2,6,10,0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 9999; /* ensure panel sits above overlay */
+    pointer-events: auto;
   }
+
+  /* Make links touch-friendly and centered */
+  .mobile-nav-active .navmenu>ul a {
+    display: block;
+    width: 100%;
+    padding: 12px 8px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  /* If content exceeds panel height, keep header toggle accessible */
+  .mobile-nav-active .navmenu>ul::-webkit-scrollbar { height: 8px; }
 }
 
 /*--------------------------------------------------------------
