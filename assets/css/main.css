@@ -640,13 +640,14 @@ html, body {
 }
 
   /* Center links, white text, and touch-friendly spacing */
-  .mobile-nav-active .navmenu a,
-  .mobile-nav-active .navmenu a:focus {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center; /* center text + icon group */
+  .mobile-nav-active .navmenu>ul > li > a,
+  .mobile-nav-active .navmenu>ul > li > a:focus {
+    /* keep anchor full-width but align inner text to the left with padding */
+    display: flex;
+    align-items: center; /* vertical centering of text and icon */
+    justify-content: space-between; /* text at left, icon at right */
     width: 100%;
-    padding: 12px 10px;
+    padding: 12px 18px; /* comfortable horizontal padding */
     font-size: 18px;
     line-height: 1.2;
     color: #ffffff; /* enforce white text */
@@ -654,10 +655,11 @@ html, body {
     background: transparent;
     border-radius: 6px;
     position: relative;
+    text-align: left; /* ensure left alignment of the label */
   }
 
-  .mobile-nav-active .navmenu a + a {
-    margin-top: 4px;
+  .mobile-nav-active .navmenu>ul > li + li {
+    margin-top: 4px; /* keep vertical spacing unchanged */
   }
 
   /* Make sure dropdowns inside the mobile panel still behave visually */
@@ -678,8 +680,8 @@ html, body {
   }
 
   /* Keep dropdown toggle icon inline next to the text */
-  .mobile-nav-active .navmenu a i {
-    margin-left: 8px;
+  .mobile-nav-active .navmenu>ul > li > a i {
+    margin-left: 12px; /* spacing between text and icon */
     font-size: 14px;
     flex: none;
   }
