@@ -1,62 +1,124 @@
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener("DOMContentLoaded", () => {
 
-const grid=document.querySelector('.gallery-container');
-const filters=document.querySelector('.gallery-filters');
-if(!grid||!filters)return;
+  const gridEl = document.querySelector(".gallery-container");
+  const filtersEl = document.querySelector(".gallery-filters");
+  const lightboxEl = document.getElementById("project-lightbox");
 
-fetch('assets/img/photography/gallery.json').then(r=>r.json()).then(data=>{
+  let galleryInstance = null;
+  let allProjects = [];
 
-const cats=new Set();
-Object.values(data).forEach(p=>p.categories.forEach(c=>cats.add(c)));
+  /* ==========================
+     LOAD JSON
+  ========================== */
+  fetch("assets/img/photography/gallery.json")
+    .then(res => res.json())
+    .then(data => {
+      allProjects = data.projects;
+      renderFilters(allProjects);
+      renderGrid(allProjects);
+      initIsotope();
+    })
+    .catch(err => console.error("Gallery JSON error:", err));
 
-filters.innerHTML='<button class="filter-btn active" data-filter="*">All</button>';
-[...cats].forEach(c=>{
-const b=document.createElement('button');
-b.className='filter-btn';
-b.dataset.filter='.'+c;
-b.textContent=c.replace(/-/g,' ');
-filters.appendChild(b);
-});
+  /* ==========================
+     FILTERS
+  ========================== */
+  function renderFilters(projects) {
+    const cats = new Set(["all"]);
+    projects.forEach(p => p.categories.forEach(c => cats.add(c)));
 
-Object.entries(data).forEach(([slug,p])=>{
-const col=document.createElement('div');
-col.className=`col-sm-6 col-md-4 col-lg-3 ${p.categories.join(' ')}`;
-col.innerHTML=`
-<div class="project-card">
-<a href="assets/img/photography/${slug}/${p.images[0]}" class="glightbox" data-gallery="${slug}" data-title="${p.title}">
-<img src="assets/img/photography/${slug}/${p.cover}" alt="${p.title}">
-<div class="project-overlay">
-<div>
-<div class="project-title">${p.title}</div>
-<div class="project-categories">${p.categories.join(', ')}</div>
-</div>
-</div>
-</a>
-</div>`;
-grid.appendChild(col);
+    cats.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = "filter-btn";
+      btn.dataset.filter = cat === "all" ? "*" : `.${cat}`;
+      btn.textContent = cat;
+      if (cat === "all") btn.classList.add("active");
+      filtersEl.appendChild(btn);
+    });
+  }
 
-p.images.slice(1).forEach(img=>{
-const h=document.createElement('a');
-h.href=`assets/img/photography/${slug}/${img}`;
-h.className='glightbox';
-h.dataset.gallery=slug;
-h.style.display='none';
-grid.appendChild(h);
-});
-});
+  /* ==========================
+     GRID
+  ========================== */
+  function renderGrid(projects) {
+    projects.forEach(project => {
 
-imagesLoaded(grid,()=>{
-const iso=new Isotope(grid,{itemSelector:'.col-sm-6',layoutMode:'masonry'});
-document.querySelectorAll('.filter-btn').forEach(btn=>{
-btn.onclick=()=>{
-document.querySelector('.filter-btn.active')?.classList.remove('active');
-btn.classList.add('active');
-iso.arrange({filter:btn.dataset.filter});
-};
-});
-document.querySelectorAll('.project-card').forEach((c,i)=>setTimeout(()=>c.classList.add('visible'),i*80));
-GLightbox({selector:'.glightbox',touchNavigation:true,loop:true});
-});
-});
+      const col = document.createElement("div");
+      col.className = `col-md-4 ${project.categories.join(" ")}`;
+
+      col.innerHTML = `
+        <div class="project-card" data-id="${project.id}">
+          <img src="${project.path + project.cover}" alt="${project.title}">
+          <div class="project-overlay">
+            <div>
+              <div class="project-title">${project.title}</div>
+              <div class="project-categories">${project.categories.join(", ")}</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      gridEl.appendChild(col);
+    });
+  }
+
+  /* ==========================
+     ISOTOPE
+  ========================== */
+  function initIsotope() {
+    imagesLoaded(gridEl, () => {
+      const iso = new Isotope(gridEl, {
+        itemSelector: ".col-md-4",
+        layoutMode: "fitRows"
+      });
+
+      filtersEl.addEventListener("click", e => {
+        if (!e.target.classList.contains("filter-btn")) return;
+
+        filtersEl.querySelectorAll(".filter-btn")
+          .forEach(b => b.classList.remove("active"));
+
+        e.target.classList.add("active");
+        iso.arrange({ filter: e.target.dataset.filter });
+      });
+    });
+  }
+
+  /* ==========================
+     DYNAMIC LIGHTGALLERY
+  ========================== */
+  gridEl.addEventListener("click", e => {
+    const card = e.target.closest(".project-card");
+    if (!card) return;
+
+    const projectId = card.dataset.id;
+    const project = allProjects.find(p => p.id === projectId);
+    if (!project) return;
+
+    const images = project.images.map(img => ({
+      src: project.path + img,
+      thumb: project.path + img
+    }));
+
+    // Destroy previous instance cleanly
+    if (galleryInstance) {
+      galleryInstance.destroy(true);
+      galleryInstance = null;
+    }
+
+    galleryInstance = lightGallery(lightboxEl, {
+      dynamic: true,
+      dynamicEl: images,
+      plugins: [lgThumbnail, lgZoom],
+      thumbnail: true,
+      zoom: true,
+      download: false,
+      counter: true,
+      closable: true,
+      escKey: true
+    });
+
+    galleryInstance.openGallery(0);
+  });
 
 });

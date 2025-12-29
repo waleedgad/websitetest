@@ -1,12 +1,78 @@
-.photography-gallery{padding-top:0}
-.gallery-filters{display:flex;justify-content:center;gap:18px}
-.filter-btn{background:none;border:none;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--nav-color)}
-.filter-btn.active,.filter-btn:hover{color:var(--nav-active-color)}
-.project-card{position:relative;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(20px)}
-.project-card.visible{opacity:1;transform:none;transition:.6s ease}
-.project-card img{width:100%;transition:.5s}
-.project-card:hover img{transform:scale(1.05)}
-.project-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;background:linear-gradient(to top,rgba(0,0,0,.6),transparent 60%);opacity:0;transition:.4s}
-.project-card:hover .project-overlay{opacity:1}
-.project-title{color:#fff;font-size:18px;font-weight:500}
-.project-categories{color:#ccc;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.photography-gallery {
+  padding-top: 0;
+}
+
+/* FILTERS */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--nav-color);
+  cursor: pointer;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  color: var(--nav-active-color);
+}
+
+/* CARD */
+.project-card {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform .5s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+/* OVERLAY */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.65),
+    rgba(0,0,0,0) 60%
+  );
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.project-categories {
+  color: #ccc;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}

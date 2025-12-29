@@ -2,49 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Photography | Waleed Gad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photography</title>
 
-  <!-- Vendor CSS -->
+  <!-- Bootstrap -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- LightGallery -->
+  <link href="assets/vendor/lightgallery/css/lightgallery-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/photography-projects.css" rel="stylesheet">
 </head>
-<body>
 
-<div id="site-header"></div>
+<body class="inner-page">
 
-<main class="main">
+  <main class="main">
 
-  <section class="page-title">
-    <div class="heading text-center">
-      <h1>Photography</h1>
-      <p>Selected photographic projects.</p>
-    </div>
-  </section>
+    <section class="section">
+      <div class="container section-title">
+        <h2>Photography</h2>
+        <p>Selected photographic projects.</p>
+      </div>
+    </section>
 
-  <section class="photography-gallery section">
-    <div class="container-fluid">
-      <div class="gallery-filters text-center mb-5"></div>
-      <div class="row g-4 gallery-container"></div>
-    </div>
-  </section>
+    <section class="photography-gallery section">
+      <div class="container-fluid">
 
-</main>
+        <div class="gallery-filters mb-5"></div>
 
-<footer id="footer" class="footer"></footer>
+        <div class="row g-4 gallery-container"></div>
 
-<!-- Vendor JS -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+      </div>
+    </section>
 
-<!-- Main JS -->
-<script src="assets/js/main.js"></script>
-<script src="assets/js/photography-projects.js"></script>
+  </main>
+
+  <!-- 🔑 ONE persistent lightbox container -->
+  <div id="project-lightbox" style="display:none;"></div>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- LightGallery -->
+  <script src="assets/vendor/lightgallery/lightgallery.min.js"></script>
+  <script src="assets/vendor/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script>
+  <script src="assets/vendor/lightgallery/plugins/zoom/lg-zoom.min.js"></script>
+
+  <!-- Main -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/photography-projects.js"></script>
+
 </body>
 </html>
