@@ -3291,3 +3291,56 @@ section,
     filter: invert(1);
   }
 }
+/* ===============================
+   FIX: Dropdown text turns black
+   (Barista dark navbar)
+   =============================== */
+
+/* Keep Portfolio text white when dropdown is open */
+.header.barista-nav .nav-link:focus,
+.header.barista-nav .nav-link:active,
+.header.barista-nav .dropdown-toggle:focus,
+.header.barista-nav .dropdown-toggle.show {
+  color: #ffffff !important;
+}
+
+/* Optional: keep arrow white too */
+.header.barista-nav .dropdown-toggle::after {
+  filter: brightness(0) invert(1);
+}
+/* ==================================================
+   BARISTA NAV – FINAL FIXES
+   ================================================== */
+
+/* Remove Bootstrap focus/active blue box */
+.header.barista-nav .nav-link:focus,
+.header.barista-nav .nav-link:active,
+.header.barista-nav .dropdown-toggle:focus,
+.header.barista-nav .dropdown-toggle:active,
+.header.barista-nav .dropdown-toggle.show {
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Keep arrow white */
+.header.barista-nav .dropdown-toggle::after {
+  filter: brightness(0) invert(1);
+}
+
+/* Arrow spacing */
+.header.barista-nav .dropdown-toggle-split {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* MOBILE: dropdown under Portfolio */
+@media (max-width: 991px) {
+  .header.barista-nav .dropdown-menu {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    background: rgba(12, 14, 18, 0.95);
+    border-radius: 10px;
+  }
+}

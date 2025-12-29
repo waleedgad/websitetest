@@ -5,7 +5,11 @@
 
       <!-- Logo -->
       <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="assets/img/wg-logo.png" alt="Waleed Gad" class="navbar-brand-image">
+        <img
+          src="assets/img/wg-logo.png"
+          alt="Waleed Gad"
+          class="navbar-brand-image site-logo"
+        >
       </a>
 
       <!-- Mobile toggle -->
@@ -22,39 +26,53 @@
       <div class="collapse navbar-collapse" id="baristaNavbar">
         <ul class="navbar-nav ms-auto align-items-lg-center">
 
+          <!-- Home -->
           <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
           </li>
 
+          <!-- Portfolio (LINK + DROPDOWN TOGGLE) -->
+          <li class="nav-item dropdown d-flex align-items-center">
+
+            <!-- Main link -->
+            <a class="nav-link" href="portfolio.html">
+              Portfolio
+            </a>
+
+            <!-- Dropdown toggle -->
+            <a
+              class="nav-link dropdown-toggle dropdown-toggle-split"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="photography.html">Photography</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="graphic-design.html">Graphic Design</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="case-studies.html">Case Studies</a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Services -->
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+
+          <!-- About -->
           <li class="nav-item">
             <a class="nav-link" href="about.html">About</a>
           </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-              Services
-            </a>
-            <ul class="dropdown-menu">
-
-              <li><a class="dropdown-item" href="#">Branding</a></li>
-              <li><a class="dropdown-item" href="photography.html">Photography</a></li>
-
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">Marketing</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Social Media</a></li>
-                  <li><a class="dropdown-item" href="#">Ads</a></li>
-                  <li><a class="dropdown-item" href="#">Strategy</a></li>
-                </ul>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="portfolio.html">Portfolio</a>
-          </li>
-
+          <!-- Contact -->
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>

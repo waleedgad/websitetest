@@ -296,3 +296,21 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 
 })();
+// Close navbar & dropdowns when clicking outside
+document.addEventListener("click", function (e) {
+  const navbar = document.querySelector(".navbar");
+  const collapse = document.getElementById("baristaNavbar");
+
+  if (navbar && navbar.contains(e.target)) return;
+
+  if (collapse && collapse.classList.contains("show")) {
+    bootstrap.Collapse.getOrCreateInstance(collapse).hide();
+  }
+
+  document.querySelectorAll(".dropdown-menu.show").forEach(menu => {
+    const toggle = menu.previousElementSibling;
+    if (toggle) {
+      bootstrap.Dropdown.getOrCreateInstance(toggle).hide();
+    }
+  });
+});
