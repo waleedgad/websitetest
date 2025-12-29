@@ -3190,4 +3190,104 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}/* ==================================================
+   BARISTA-STYLE NAVBAR (SCOPED, SAFE)
+   ================================================== */
+
+.header.barista-nav {
+  background: transparent;
+}
+
+.header.barista-nav .navbar {
+  margin-top: 12px;
+  padding: 14px 24px;
+  border-radius: 14px;
+
+  background: rgba(12, 14, 18, 0.45);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* Logo */
+.barista-nav .navbar-brand-image {
+  max-height: 38px;
+}
+
+/* Links */
+.barista-nav .nav-link {
+  color: var(--nav-color, #9ca3af);
+  font-family: var(--nav-font, "Poppins", sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  padding: 10px 14px;
+  transition: color 0.2s ease;
+}
+
+.barista-nav .nav-link:hover,
+.barista-nav .nav-link.active {
+  color: #ffffff;
+}
+
+/* Dropdown */
+.barista-nav .dropdown-menu {
+  background: rgba(12, 14, 18, 0.55);
+  backdrop-filter: blur(6px) saturate(115%);
+  -webkit-backdrop-filter: blur(6px) saturate(115%);
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  padding: 10px 0;
+}
+
+.barista-nav .dropdown-item {
+  color: #e5e7eb;
+  font-size: 14px;
+  padding: 8px 20px;
+}
+
+.barista-nav .dropdown-item:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+/* Deep dropdown (right side) */
+.barista-nav .dropdown-submenu {
+  position: relative;
+}
+
+.barista-nav .dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: 2px;
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+  .header.barista-nav .navbar {
+    border-radius: 12px;
+  }
+
+  .barista-nav .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding-left: 12px;
+  }
+
+  .barista-nav .dropdown-submenu > .dropdown-menu {
+    margin-left: 0;
+  }
+
+  .barista-nav .navbar-toggler {
+    border: none;
+  }
+
+  .barista-nav .navbar-toggler-icon {
+    filter: invert(1);
+  }
 }
