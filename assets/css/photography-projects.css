@@ -51,7 +51,7 @@
 }
 
 /* =========================================================
-   GALLERY CARD
+   GALLERY CARDS
    ========================================================= */
 
 .photography-page .project-card {
@@ -111,9 +111,46 @@
 }
 
 /* =========================================================
-   SAFETY: ENSURE DUMMY SCROLL-TOP NEVER SHOWS
+   LIGHTGALLERY FIX (THIS IS THE KEY)
    ========================================================= */
 
-.photography-page .scroll-top {
-  display: none !important;
+/* Hidden gallery anchors */
+.photography-page .lg-hidden {
+  display: none;
+}
+
+/* Force LightGallery UI visibility */
+.photography-page .lg-toolbar,
+.photography-page .lg-actions,
+.photography-page .lg-prev,
+.photography-page .lg-next,
+.photography-page .lg-close {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure icons are visible (SVG fix) */
+.photography-page .lg-toolbar svg,
+.photography-page .lg-actions svg {
+  fill: #ffffff !important;
+}
+
+/* Improve contrast against dark bar */
+.photography-page .lg-toolbar {
+  background: rgba(0, 0, 0, 0.65) !important;
+}
+
+/* Arrow size */
+.photography-page .lg-prev,
+.photography-page .lg-next {
+  font-size: 32px;
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .photography-page .lg-prev,
+  .photography-page .lg-next {
+    font-size: 26px;
+  }
 }

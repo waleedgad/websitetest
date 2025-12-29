@@ -3,18 +3,52 @@
     {
       "id": "portsaid",
       "title": "Portsaid",
-      "categories": ["free"],
-      "path": "assets/img/photography/portsaid/",
+      "categories": [
+        "Walks"
+      ],
+      "allCategories": [
+        "Walks",
+        "Street Photography"
+      ],
+      "path": "assets/img/photography/Portsaid/",
       "cover": "cover.jpg",
-      "images": ["01.jpg", "02.jpg"]
+      "images": [
+        "01.jpg",
+        "02.jpg",
+        "03.jpg",
+        "04.jpg",
+        "05.jpg",
+        "06.jpg",
+        "08.jpg",
+        "09.jpg",
+        "10.jpg"
+      ],
+      "location": "Egypt",
+      "date": "2025",
+      "description": "",
+      "order": null
     },
     {
       "id": "redbird",
       "title": "Redbird",
-      "categories": ["commercial"],
+      "categories": [
+        "Food & Beverage"
+      ],
+      "allCategories": [
+        "Food & Beverage"
+      ],
       "path": "assets/img/photography/redbird/",
       "cover": "cover.jpg",
-      "images": ["01.jpg", "02.jpg"]
+      "images": [
+        "01.jpg",
+        "02.jpg",
+        "03.jpg",
+        "04.jpg"
+      ],
+      "location": "Cairo",
+      "date": "2024",
+      "description": "",
+      "order": null
     }
   ]
 }

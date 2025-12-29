@@ -1,4 +1,11 @@
 {
   "title": "Redbird",
-  "categories": []
+  "categories": [
+    "Food & Beverage"
+  ],
+  "location": "Cairo",
+  "date": "2024",
+  "description": "",
+  "cover": "cover.jpg",
+  "order": null
 }

@@ -1,4 +1,12 @@
 {
   "title": "Portsaid",
-  "categories": [free]
+  "categories": [
+    "Walks",
+    "Street Photography"
+  ],
+  "location": "Egypt",
+  "date": "2025",
+  "description": "",
+  "cover": "cover.jpg",
+  "order": null
 }

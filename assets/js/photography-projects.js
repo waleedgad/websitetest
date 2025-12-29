@@ -1,22 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Run ONLY on photography page
   if (!document.body.classList.contains('photography-page')) return;
 
   /* =========================================================
-     SAFETY PATCH
-     Prevent main.js crash if .scroll-top doesn't exist
+     SAFETY PATCH – satisfy main.js dependency
      ========================================================= */
   if (!document.querySelector('.scroll-top')) {
-    const dummyScrollTop = document.createElement('a');
-    dummyScrollTop.className = 'scroll-top';
-    dummyScrollTop.href = '#';
-    dummyScrollTop.style.display = 'none';
-    document.body.appendChild(dummyScrollTop);
+    const dummy = document.createElement('a');
+    dummy.className = 'scroll-top';
+    dummy.style.display = 'none';
+    document.body.appendChild(dummy);
   }
-
-  /* =========================================================
-     GALLERY LOGIC
-     ========================================================= */
 
   const filtersContainer = document.querySelector('.gallery-filters');
   const galleryContainer = document.querySelector('.gallery-container');
@@ -24,18 +17,35 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!filtersContainer || !galleryContainer) return;
 
   fetch('assets/img/photography/gallery.json')
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
-      const categoriesSet = new Set();
+      const categories = new Set();
 
       data.projects.forEach(project => {
-        project.categories.forEach(cat => categoriesSet.add(cat));
+        project.categories.forEach(c => categories.add(c));
 
         const col = document.createElement('div');
         col.className = `col-lg-4 col-md-6 project-item ${project.categories.join(' ')}`;
 
+        /* -------------------------------
+           Build hidden gallery anchors
+        -------------------------------- */
+        const galleryId = `gallery-${project.id}`;
+
+        let anchors = '';
+        project.images.forEach(img => {
+          anchors += `
+            <a
+              href="${project.path + img}"
+              class="lg-item"
+              data-lg-size="1600-1067"
+              data-sub-html="<h4>${project.title}</h4>"
+            ></a>
+          `;
+        });
+
         col.innerHTML = `
-          <div class="project-card" data-src="${project.path + project.cover}">
+          <div class="project-card" data-gallery="${galleryId}">
             <img src="${project.path + project.cover}" alt="${project.title}">
             <div class="project-overlay">
               <div>
@@ -44,23 +54,45 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             </div>
           </div>
+
+          <div id="${galleryId}" class="lg-hidden">
+            ${anchors}
+          </div>
         `;
 
         galleryContainer.appendChild(col);
+
+        /* -------------------------------
+           Init LightGallery PER PROJECT
+        -------------------------------- */
+        const lgContainer = col.querySelector(`#${galleryId}`);
+        const lgInstance = lightGallery(lgContainer, {
+          selector: '.lg-item',
+          download: false,
+          controls: true,
+          closable: true,
+          loop: true,
+          counter: true
+        });
+
+        /* -------------------------------
+           Open gallery on card click
+        -------------------------------- */
+        col.querySelector('.project-card')
+          .addEventListener('click', () => {
+            lgInstance.openGallery(0);
+          });
       });
 
-      /* =========================================================
-         BUILD FILTER BUTTONS
-         ========================================================= */
+      /* -------------------------------
+         Filters
+      -------------------------------- */
       filtersContainer.innerHTML =
         `<button class="filter-btn active" data-filter="*">All</button>` +
-        [...categoriesSet].map(cat =>
-          `<button class="filter-btn" data-filter=".${cat}">${cat}</button>`
+        [...categories].map(c =>
+          `<button class="filter-btn" data-filter=".${c}">${c}</button>`
         ).join('');
 
-      /* =========================================================
-         INIT ISOTOPE (AFTER IMAGES LOAD)
-         ========================================================= */
       imagesLoaded(galleryContainer, () => {
         const iso = new Isotope(galleryContainer, {
           itemSelector: '.project-item',
@@ -71,23 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
           if (!e.target.classList.contains('filter-btn')) return;
 
           filtersContainer.querySelectorAll('.filter-btn')
-            .forEach(btn => btn.classList.remove('active'));
+            .forEach(b => b.classList.remove('active'));
 
           e.target.classList.add('active');
           iso.arrange({ filter: e.target.dataset.filter });
         });
       });
-
-      /* =========================================================
-         INIT LIGHTGALLERY
-         ========================================================= */
-      lightGallery(galleryContainer, {
-        selector: '.project-card',
-        download: false,
-        counter: false
-      });
     })
-    .catch(err => {
-      console.error('Gallery JSON load error:', err);
-    });
+    .catch(err => console.error('Gallery error:', err));
 });
