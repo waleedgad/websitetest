@@ -30,7 +30,7 @@
     },
     {
       "id": "schools",
-      "title": "Schools",
+      "title": "Smart City",
       "categories": [
         "Schools"
       ],
@@ -61,6 +61,28 @@
         "cf8c6c130333485.617dcb6a2fd3d.jpg",
         "db57e6145386549.629de42c0a8d7.jpg",
         "dfbd2f130333485.62a35df43f999.jpg"
+      ],
+      "location": "Egypt",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "more-photos",
+      "title": "Maven",
+      "categories": [
+        "Schools"
+      ],
+      "allCategories": [
+        "Schools",
+        "Logo"
+      ],
+      "path": "assets/img/photography/more photos/",
+      "cover": "34FlagMockup003 copy 2.jpg",
+      "images": [
+        "FlagMockup003 copy 2.jpg",
+        "Free_Pen_Mockup_3 copy 2.jpg",
+        "OQ3A4J1 copy 3.jpg"
       ],
       "location": "",
       "date": "",
