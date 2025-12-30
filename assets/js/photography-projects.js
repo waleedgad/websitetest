@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     masonry: { columnWidth: ".gallery-item" }
   });
 
-  /* ✅ PER-IMAGE LOAD (SKELETON → BLUR → SHOW) */
+  /* PER-IMAGE LOAD (SKELETON → SHOW) */
   gridEl.querySelectorAll(".project-cover").forEach(img => {
     const card = img.closest(".project-card");
 
@@ -102,11 +102,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     iso.arrange({ filter: e.target.dataset.filter });
   });
 
-  /* LIGHTGALLERY — v2 */
+  /* LIGHTGALLERY — v2 (iOS FIXED) */
   document.querySelectorAll(".project-card").forEach(card => {
     const gallery = card.querySelector(".lg-items");
 
-    lightGallery(gallery, {
+    const lgInstance = lightGallery(gallery, {
       selector: "a",
       plugins: [lgThumbnail, lgZoom],
       thumbnail: true,
@@ -115,8 +115,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       download: false
     });
 
+    /* ✅ iPhone-safe open */
     card.querySelector(".project-cover").addEventListener("click", () => {
-      gallery.querySelector("a")?.click();
+      lgInstance.openGallery(0);
     });
   });
 });
