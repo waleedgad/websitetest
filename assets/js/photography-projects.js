@@ -35,6 +35,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             href="${p.path + img}"
             data-src="${p.path + img}"
             data-lg-thumb="${p.path + img}"
+            data-sub-html="
+              <h4>${p.title}</h4>
+              <p>${p.description || ""}</p>
+            "
           >
             <img src="${p.path + img}" class="d-none" alt="">
           </a>
@@ -115,7 +119,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       download: false
     });
 
-    /* ✅ iPhone-safe open */
     card.querySelector(".project-cover").addEventListener("click", () => {
       lgInstance.openGallery(0);
     });

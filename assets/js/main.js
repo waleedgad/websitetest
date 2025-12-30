@@ -238,10 +238,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ===============================
-     SKILLS PROGRESS BAR ANIMATION ✅ FIX
+     SKILLS PROGRESS BAR
      =============================== */
   const skillsSection = document.querySelector(".skills-animation");
-
   if (skillsSection && typeof Waypoint !== "undefined") {
     new Waypoint({
       element: skillsSection,
@@ -253,30 +252,31 @@ document.addEventListener("DOMContentLoaded", () => {
             const value = bar.getAttribute("aria-valuenow");
             bar.style.width = value + "%";
           });
-
         this.destroy();
       }
     });
   }
 
   /* ======================================================
-     IMAGE PROTECTION — SAFE / NON-DESTRUCTIVE
+     IMAGE PROTECTION — SAFE (FIXED)
      ====================================================== */
   document.addEventListener("contextmenu", e => {
-    if (e.target.closest("img")) e.preventDefault();
+    if (
+      e.target.closest("img") &&
+      !e.target.closest(".lg-outer")
+    ) {
+      e.preventDefault();
+    }
   });
 
   document.addEventListener("dragstart", e => {
-    if (e.target.closest("img")) e.preventDefault();
+    if (
+      e.target.closest("img") &&
+      !e.target.closest(".lg-outer")
+    ) {
+      e.preventDefault();
+    }
   });
-
-  document.addEventListener(
-    "touchstart",
-    e => {
-      if (e.target.closest("img")) e.preventDefault();
-    },
-    { passive: false }
-  );
 
   document.addEventListener("keydown", e => {
     if ((e.ctrlKey || e.metaKey) && ["s", "u"].includes(e.key.toLowerCase())) {
