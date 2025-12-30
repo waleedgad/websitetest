@@ -73,9 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.initNavMenu = function () {
     const toggleBtn = document.querySelector(".mobile-nav-toggle");
-    const header = document.querySelector("#header");
 
-    /* Hamburger toggle */
     if (toggleBtn && !toggleBtn.dataset.navInit) {
       toggleBtn.addEventListener("click", e => {
         e.stopPropagation();
@@ -84,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleBtn.dataset.navInit = "true";
     }
 
-    /* Close on link click */
     document.querySelectorAll("#navmenu a").forEach(link => {
       if (link.dataset.navInit) return;
       link.addEventListener("click", () => {
@@ -95,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
       link.dataset.navInit = "true";
     });
 
-    /* Mobile dropdowns */
     document.querySelectorAll("#navmenu li.dropdown > a").forEach(anchor => {
       if (anchor.dataset.navInit) return;
       anchor.addEventListener("click", e => {
@@ -108,31 +104,29 @@ document.addEventListener("DOMContentLoaded", () => {
       anchor.dataset.navInit = "true";
     });
 
-    /* ============================================
-       ✅ OUTSIDE CLICK / TAP TO CLOSE (FIXED)
-       ============================================ */
+    /* Outside click close */
     if (!document.body.dataset.navOutsideInit) {
-  document.addEventListener("click", e => {
-    if (!isMobile()) return;
+      document.addEventListener("click", e => {
+        if (!isMobile()) return;
 
-    const isOpen =
-      document.body.classList.contains("mobile-nav-active") ||
-      document.querySelector(".navbar-collapse.show");
+        const isOpen =
+          document.body.classList.contains("mobile-nav-active") ||
+          document.querySelector(".navbar-collapse.show");
 
-    if (!isOpen) return;
+        if (!isOpen) return;
 
-    const header =
-      document.querySelector("#header") ||
-      document.querySelector("#site-header") ||
-      document.querySelector(".navbar");
+        const header =
+          document.querySelector("#header") ||
+          document.querySelector("#site-header") ||
+          document.querySelector(".navbar");
 
-    if (header && !header.contains(e.target)) {
-      mobileNavToggle(true);
+        if (header && !header.contains(e.target)) {
+          mobileNavToggle(true);
+        }
+      });
+
+      document.body.dataset.navOutsideInit = "true";
     }
-  });
-
-  document.body.dataset.navOutsideInit = "true";
-}
   };
 
   window.addEventListener("load", () => {
@@ -242,6 +236,66 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  /* ===============================
+     SKILLS PROGRESS BAR ANIMATION ✅ FIX
+     =============================== */
+  const skillsSection = document.querySelector(".skills-animation");
+
+  if (skillsSection && typeof Waypoint !== "undefined") {
+    new Waypoint({
+      element: skillsSection,
+      offset: "80%",
+      handler: function () {
+        document
+          .querySelectorAll(".skills-animation .progress-bar")
+          .forEach(bar => {
+            const value = bar.getAttribute("aria-valuenow");
+            bar.style.width = value + "%";
+          });
+
+        this.destroy();
+      }
+    });
+  }
+
+  /* ======================================================
+     IMAGE PROTECTION — SAFE / NON-DESTRUCTIVE
+     ====================================================== */
+  document.addEventListener("contextmenu", e => {
+    if (e.target.closest("img")) e.preventDefault();
+  });
+
+  document.addEventListener("dragstart", e => {
+    if (e.target.closest("img")) e.preventDefault();
+  });
+
+  document.addEventListener(
+    "touchstart",
+    e => {
+      if (e.target.closest("img")) e.preventDefault();
+    },
+    { passive: false }
+  );
+
+  document.addEventListener("keydown", e => {
+    if ((e.ctrlKey || e.metaKey) && ["s", "u"].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+
+    if (
+      (e.ctrlKey || e.metaKey) &&
+      e.shiftKey &&
+      ["i", "j"].includes(e.key.toLowerCase())
+    ) {
+      e.preventDefault();
+    }
+
+    if (e.key === "PrintScreen") {
+      e.preventDefault();
+      navigator.clipboard?.writeText("");
+    }
+  });
 
   // ❌ GLightbox REMOVED
 })();

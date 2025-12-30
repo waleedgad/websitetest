@@ -1,16 +1,12 @@
 /* =========================================================
-   PHOTOGRAPHY GALLERY
-   FULLY SCOPED — ZERO GLOBAL LEAK
+   PHOTOGRAPHY GALLERY — FULLY SCOPED
    ========================================================= */
 
 .photography-gallery {
   position: relative;
 }
 
-/* ===============================
-   FILTERS
-   =============================== */
-
+/* FILTERS */
 .photography-gallery .gallery-filters {
   display: flex;
   justify-content: center;
@@ -51,18 +47,13 @@
   color: var(--nav-active-color);
 }
 
-/* ===============================
-   GRID ITEMS
-   =============================== */
-
+/* GRID */
 .photography-gallery .gallery-item {
   padding: 12px;
+  opacity: 0; /* prevent flash */
 }
 
-/* ===============================
-   CARD
-   =============================== */
-
+/* CARD */
 .photography-gallery .project-card {
   position: relative;
   overflow: hidden;
@@ -71,7 +62,6 @@
 
 .photography-gallery .project-card img {
   width: 100%;
-  height: auto;
   display: block;
   transition: transform 0.5s ease;
 }
@@ -80,10 +70,7 @@
   transform: scale(1.05);
 }
 
-/* ===============================
-   OVERLAY
-   =============================== */
-
+/* OVERLAY */
 .photography-gallery .project-overlay {
   position: absolute;
   inset: 0;
@@ -105,63 +92,20 @@
 }
 
 .photography-gallery .project-title {
-  color: #ffffff;
+  color: #fff;
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 4px;
 }
 
 .photography-gallery .project-categories {
-  color: #cccccc;
+  color: #ccc;
   font-size: 12px;
   letter-spacing: 0.08em;
 }
 
-/* ===============================
-   MOBILE — ALWAYS VISIBLE
-   =============================== */
-
+/* MOBILE */
 @media (max-width: 768px) {
   .photography-gallery .project-overlay {
     opacity: 1 !important;
-  }
-}
-
-/* ===============================
-   LIGHTGALLERY — SAFE SCOPE
-   =============================== */
-
-.photography-gallery .lg-hidden {
-  display: none;
-}
-
-.photography-gallery .lg-toolbar,
-.photography-gallery .lg-actions,
-.photography-gallery .lg-prev,
-.photography-gallery .lg-next,
-.photography-gallery .lg-close {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
-
-.photography-gallery .lg-toolbar svg,
-.photography-gallery .lg-actions svg {
-  fill: #ffffff !important;
-}
-
-.photography-gallery .lg-toolbar {
-  background: rgba(0, 0, 0, 0.65) !important;
-}
-
-.photography-gallery .lg-prev,
-.photography-gallery .lg-next {
-  font-size: 32px;
-}
-
-@media (max-width: 768px) {
-  .photography-gallery .lg-prev,
-  .photography-gallery .lg-next {
-    font-size: 26px;
   }
 }
