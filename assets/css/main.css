@@ -168,10 +168,7 @@ h6 {
   line-height: 1;
 }
 
-.header .logo img {
-  max-height: 36px;
-  margin-right: 8px;
-}
+
 
 /* Glass surface applied through a pointer-events-free pseudo element */
 .header::before {
@@ -210,13 +207,7 @@ h6 {
 }
 
 /* Ensure the header logo (used in header-name and .logo) is consistently sized */
-.header .logo img,
-.header .header-name img {
-  max-height: 36px;
-  margin-right: 8px;
-  display: inline-block;
-  vertical-align: middle;
-}
+
 
 .header .header-social-links {
   padding-right: 15px;
@@ -294,9 +285,7 @@ body.index-page .footer .social-links {
     display: inline-block;
   }
 
-  .header .header-social-links .header-name img {
-    max-height: 40px;
-  }
+  
 
   .header .header-social-links {
     padding-right: 12px;
@@ -309,509 +298,6 @@ body.index-page .footer .social-links {
   --background-color: #ffffff; /* white header on scroll */
   /* Navigation colors intentionally inherited from :root to preserve contrast */
   --nav-mobile-background-color: #f8fafc;
-}
-
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/* Desktop Navigation */
-@media (min-width: 1200px) {
-  .navmenu {
-    padding: 0;
-    overflow: visible; /* allow dropdowns to render above other elements */
-  }
-
-  .navmenu ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    list-style: none;
-    align-items: center;
-  }
-
-  .navmenu li {
-    position: relative;
-  }
-
-  .navmenu>ul>li {
-    white-space: nowrap;
-    padding: 15px 28px 15px 0;
-  }
-
-  .navmenu>ul>li:last-child {
-    padding-right: 0;
-  }
-
-  .navmenu a,
-  .navmenu a:focus {
-    color: var(--nav-color);
-    font-size: 15px;
-    padding: 0 2px;
-    font-family: var(--nav-font);
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    white-space: nowrap;
-    transition: 0.3s;
-    position: relative;
-  }
-
-  .navmenu a i,
-  .navmenu a:focus i {
-    font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-    transition: 0.3s;
-  }
-
-  .navmenu>ul>li>a:before {
-    content: "";
-    position: absolute;
-    height: 2px;
-    bottom: -6px;
-    left: 0;
-    background-color: var(--nav-hover-color);
-    visibility: hidden;
-    width: 0px;
-    transition: all 0.3s ease-in-out 0s;
-  }
-
-  .navmenu a:hover:before,
-  .navmenu li:hover>a:before,
-  .navmenu .active:before {
-    visibility: visible;
-    width: 25px;
-  }
-
-  .navmenu li:hover>a,
-  .navmenu .active,
-  .navmenu .active:focus {
-    color: var(--nav-hover-color);
-  }
-
-  .navmenu .dropdown ul {
-    margin: 0;
-    padding: 12px 0;
-    /* subtle glass surface for desktop dropdowns */
-    background-color: rgba(12, 14, 18, 0.46);
-    backdrop-filter: blur(6px) saturate(115%);
-    -webkit-backdrop-filter: blur(6px) saturate(115%);
-    display: block;
-    position: absolute;
-    visibility: hidden;
-    left: -5px;
-    top: 130%;
-    opacity: 0;
-    transition: 0.3s;
-    border-radius: 8px;
-    z-index: 1001; /* above header glass (997) but below global overlays */
-    box-shadow: 0 8px 20px rgba(2, 6, 10, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    -webkit-font-smoothing: antialiased;
-    will-change: transform, opacity;
-    overflow: visible; /* avoid clipping child dropdowns */
-  }
-
-  .navmenu .dropdown ul li {
-    min-width: 200px;
-  }
-
-  .navmenu .dropdown ul a {
-    padding: 10px 20px;
-    font-size: 15px;
-    text-transform: none;
-    color: var(--nav-dropdown-color);
-  }
-
-  .navmenu .dropdown ul a i {
-    font-size: 12px;
-  }
-
-  .navmenu .dropdown ul a:hover,
-  .navmenu .dropdown ul .active:hover,
-  .navmenu .dropdown ul li:hover>a {
-    color: var(--nav-dropdown-hover-color);
-  }
-
-  .navmenu .dropdown:hover>ul {
-    opacity: 1;
-    top: 100%;
-    visibility: visible;
-  }
-
-  .navmenu .dropdown .dropdown ul {
-    top: 0;
-    left: 100%; /* open to the RIGHT of parent on desktop */
-    visibility: hidden;
-  }
-
-  .navmenu .dropdown .dropdown:hover>ul {
-    opacity: 1;
-    top: 0;
-    left: 100%; /* keep same right-opening position when visible */
-    visibility: visible;
-  }
-}
-
-/* -----------------------------
-   Global Navigation Color System
-   Enforce variable-driven colors across desktop, mobile, dropdowns
-   and deep-dropdowns. Neutralize scrolled/sticky color overrides.
-   ----------------------------- */
-
-/* Base nav link colors (use variables only) */
-.navmenu a,
-.navmenu a:focus {
-  color: var(--nav-color);
-  transition: color 0.18s ease;
-}
-
-.navmenu a:hover,
-.navmenu a:focus,
-.navmenu .active,
-.navmenu .active:focus {
-  color: var(--nav-hover-color);
-}
-
-.navmenu .active,
-.navmenu li.active > a {
-  color: var(--nav-active-color);
-}
-
-/* Ensure dropdown and deep-dropdown link colors follow the same vars */
-.navmenu .dropdown ul a,
-.navmenu .dropdown .dropdown ul a,
-.navmenu .dropdown ul a:focus {
-  color: var(--nav-color);
-}
-
-.navmenu .dropdown ul a:hover,
-.navmenu .dropdown .dropdown ul a:hover {
-  color: var(--nav-hover-color);
-}
-
-.navmenu .dropdown ul .active,
-.navmenu .dropdown .dropdown ul .active {
-  color: var(--nav-active-color);
-}
-
-/* Neutralize sticky / scrolled header color overrides so hierarchy stays consistent */
-.header-scrolled .navmenu a,
-.sticked .navmenu a,
-.scrolled .navmenu a,
-.scrolled .header .navmenu a {
-  color: var(--nav-color) !important;
-}
-
-.header-scrolled .navmenu a:hover,
-.sticked .navmenu a:hover,
-.scrolled .navmenu a:hover {
-  color: var(--nav-hover-color) !important;
-}
-
-.header-scrolled .navmenu .active,
-.sticked .navmenu .active,
-.scrolled .navmenu .active {
-  color: var(--nav-active-color) !important;
-}
-
-/* -----------------------------
-   Deep dropdown glass style (match first-level dropdowns)
-   ----------------------------- */
-.navmenu .dropdown .dropdown ul {
-  background-color: rgba(12, 14, 18, 0.46);
-  backdrop-filter: blur(6px) saturate(115%);
-  -webkit-backdrop-filter: blur(6px) saturate(115%);
-  display: block;
-  position: absolute;
-  visibility: hidden;
-  left: 100%;
-  top: 0;
-  opacity: 0;
-  transition: 0.3s;
-  border-radius: 8px;
-  z-index: 1001;
-  box-shadow: 0 8px 20px rgba(2, 6, 10, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  overflow: visible;
-}
-
-.navmenu .dropdown .dropdown:hover>ul {
-  opacity: 1;
-  top: 0;
-  left: 100%;
-  visibility: visible;
-}
-
-
-/* Mobile Navigation */
-@media (max-width: 1199px) {
-  .mobile-nav-toggle {
-    color: var(--nav-color);
-    font-size: 28px;
-    line-height: 0;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-
-  .navmenu {
-    padding: 0;
-    z-index: 9997;
-  }
-
-  .navmenu ul {
-    display: none;
-    list-style: none;
-    position: absolute;
-    inset: 60px 20px 20px 20px;
-    padding: 10px 0;
-    margin: 0;
-    border-radius: 6px;
-    background-color: var(--nav-mobile-background-color);
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-    box-shadow: none;
-    overflow-y: auto;
-    transition: 0.3s;
-    z-index: 9998;
-  }
-
-  .navmenu a,
-  .navmenu a:focus {
-    color: var(--nav-dropdown-color);
-    padding: 10px 20px;
-    font-family: var(--nav-font);
-    font-size: 17px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    white-space: nowrap;
-    transition: 0.3s;
-  }
-
-  .navmenu a i,
-  .navmenu a:focus i {
-    font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: 0.3s;
-    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
-  }
-
-  .navmenu a i:hover,
-  .navmenu a:focus i:hover {
-    background-color: var(--accent-color);
-    color: var(--contrast-color);
-  }
-
-  .navmenu a:hover,
-  .navmenu .active,
-  .navmenu .active:focus {
-    color: var(--nav-dropdown-hover-color);
-  }
-
-  .navmenu .active i,
-  .navmenu .active:focus i {
-    background-color: var(--accent-color);
-    color: var(--contrast-color);
-    transform: rotate(180deg);
-  }
-
-  .navmenu .dropdown ul {
-    position: static;
-    display: none;
-    z-index: 99;
-    padding: 10px 0;
-    margin: 10px 20px;
-    background-color: var(--nav-dropdown-background-color);
-    transition: all 0.5s ease-in-out;
-  }
-
-  .navmenu .dropdown ul ul {
-    background-color: rgba(33, 37, 41, 0.1);
-  }
-
-  .navmenu .dropdown>.dropdown-active {
-    display: block;
-    background-color: rgba(33, 37, 41, 0.03);
-  }
-
-  .mobile-nav-active {
-    overflow: hidden;
-  }
-
-  .mobile-nav-active .mobile-nav-toggle {
-    color: #fff;
-    position: absolute;
-    font-size: 32px;
-    top: 15px;
-    right: 15px;
-    margin-right: 0;
-    z-index: 9999;
-  }
-
-  /* Centered glass-morphism mobile menu overlay
-     - Keep the existing toggle logic and z-index ordering
-     - Mobile toggle button has z-index: 9999 so it stays above this overlay and remains clickable */
-  .mobile-nav-active .navmenu {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(6, 8, 10, 0.45); /* subtle dim only - NO backdrop-filter here */
-    -webkit-backdrop-filter: none !important; /* explicitly disable backdrop-filter on overlay */
-    transition: background 0.25s ease;
-    z-index: 9997; /* keep below the toggle (9999) */
-    overflow: hidden; /* container doesn't scroll; inner box can */
-    touch-action: manipulation;
-  }
-
-  /* The centered glass panel */
-  .mobile-nav-active .navmenu>ul {
-    display: block;
-    position: relative;
-    z-index: 9998; /* above overlay, below toggle */
-    width: calc(100% - 32px);
-    max-width: 520px;
-    /* right-side pop-out: push panel to the right edge */
-    margin: 12px 0 12px auto;
-    padding: 10px 8px;
-    /* remove right-side border-radius so the box is flush on right edge */
-    border-radius: 10px 0 0 10px;
-    /* keep existing boxed panel visual intact */
-    background-color: rgba(12, 14, 18, 0.98);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
-    /* internal scrolling when content exceeds available height */
-    max-height: calc(100vh - 40px);
-    overflow-y: auto; /* vertical scroll only inside panel */
-    overflow-x: hidden;
-    text-align: center; /* center link text */
-    -webkit-overflow-scrolling: touch;
-    /* animate only opacity and transform on the panel */
-    transition: opacity 220ms ease, transform 220ms ease;
-    transform: translateX(6px);
-    opacity: 1;
-  }
-
-/* Enable panel-only glass on browsers that support backdrop-filter */
-@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  /* If browser supports it, apply a very subtle blur to the panel only.
-     This is intentionally mild to avoid mobile/iOS artifacts. */
-  .mobile-nav-active .navmenu>ul {
-    backdrop-filter: blur(4px) saturate(110%);
-    -webkit-backdrop-filter: blur(4px) saturate(110%);
-  }
-}
-
-/* iOS / Safari safety: ensure overlay never applies backdrop-filter at viewport level
-   and isolate hero elements so they are not part of the same compositing group. */
-/* Prevent unexpected scaling/blur of large background typography on iOS */
-.hero,
-.hero .hero-content,
-.hero .hero-image,
-.hero .hero-content h1,
-.hero .hero-content h2 {
-  isolation: isolate;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Extra guard: ensure no transforms applied to body/html by other rules */
-html, body {
-  transform: none !important;
-}
-
-  /* Center links, white text, and touch-friendly spacing */
-  .mobile-nav-active .navmenu>ul > li > a,
-  .mobile-nav-active .navmenu>ul > li > a:focus {
-    /* keep anchor full-width but align inner text to the left with padding */
-    display: flex;
-    align-items: center; /* vertical centering of text and icon */
-    justify-content: space-between; /* text at left, icon at right */
-    width: 100%;
-    padding: 12px 18px; /* comfortable horizontal padding */
-    font-size: 18px;
-    line-height: 1.2;
-    color: #ffffff; /* enforce white text */
-    text-decoration: none;
-    background: transparent;
-    border-radius: 6px;
-    position: relative;
-    text-align: left; /* ensure left alignment of the label */
-  }
-
-  .mobile-nav-active .navmenu>ul > li + li {
-    margin-top: 4px; /* keep vertical spacing unchanged */
-  }
-
-  /* Mobile menu typography consistency (mobile-only, strictly scoped) */
-  .mobile-nav-active .navmenu>ul,
-  .mobile-nav-active .navmenu>ul li,
-  .mobile-nav-active .navmenu>ul li a,
-  .mobile-nav-active .navmenu>ul li a * {
-    font-family: var(--nav-font);
-    font-size: 18px;
-    letter-spacing: 0px;
-    line-height: 1.2;
-  }
-
-  /* Weight: inactive lighter, active uses requested stronger weight */
-  .mobile-nav-active .navmenu>ul > li > a {
-    font-weight: 250;
-  }
-
-  .mobile-nav-active .navmenu>ul > li.active > a,
-  .mobile-nav-active .navmenu>ul > li > a:active {
-    font-weight: 500;
-  }
-
-  /* Make sure dropdowns inside the mobile panel still behave visually */
-  .mobile-nav-active .navmenu .dropdown ul {
-    margin: 12px 0 0 0;
-    background: transparent;
-    position: static;
-  }
-
-  /* Mobile: deep-dropdown text should use nav color variables (avoid inheriting box colors) */
-  .mobile-nav-active .navmenu .dropdown .dropdown ul a,
-  .mobile-nav-active .navmenu .dropdown .dropdown ul a * {
-    color: var(--nav-color);
-  }
-
-  .mobile-nav-active .navmenu .dropdown .dropdown ul a:hover {
-    color: var(--nav-hover-color);
-  }
-
-  .mobile-nav-active .navmenu .dropdown .dropdown ul .active {
-    color: var(--nav-active-color);
-  }
-
-  /* subtle underline effect on hover/focus/active using transform (allowed animation) */
-  /* hover/active: subtle opacity change only (no underline or dividers) */
-  .mobile-nav-active .navmenu a:hover,
-  .mobile-nav-active .navmenu a:focus,
-  .mobile-nav-active .navmenu .active {
-    background: rgba(255, 255, 255, 0.03);
-    color: #ffffff;
-    opacity: 0.98;
-  }
-
-  /* Keep dropdown toggle icon inline next to the text */
-  .mobile-nav-active .navmenu>ul > li > a i {
-    margin-left: 12px; /* spacing between text and icon */
-    font-size: 14px;
-    flex: none;
-  }
 }
 
 /*--------------------------------------------------------------
@@ -2327,9 +1813,10 @@ section,
 }
 
 .service-details .overview-card .overview-details .detail-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: start;
+  gap: 24px;
   margin-bottom: 1rem;
 }
 
@@ -3201,9 +2688,7 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
-}/* ==================================================
-   BARISTA-STYLE NAVBAR (SCOPED, SAFE)
-   ================================================== */
+}
 
 .header.barista-nav {
   background: transparent;
@@ -3223,9 +2708,7 @@ section,
 }
 
 /* Logo */
-.barista-nav .navbar-brand-image {
-  max-height: 38px;
-}
+
 
 /* Links */
 .barista-nav .nav-link {
@@ -3302,10 +2785,7 @@ section,
     filter: invert(1);
   }
 }
-/* ===============================
-   FIX: Dropdown text turns black
-   (Barista dark navbar)
-   =============================== */
+
 
 /* Keep Portfolio text white when dropdown is open */
 .header.barista-nav .nav-link:focus,
@@ -3319,9 +2799,7 @@ section,
 .header.barista-nav .dropdown-toggle::after {
   filter: brightness(0) invert(1);
 }
-/* ==================================================
-   BARISTA NAV – FINAL FIXES
-   ================================================== */
+
 
 /* Remove Bootstrap focus/active blue box */
 .header.barista-nav .nav-link:focus,
@@ -3355,14 +2833,9 @@ section,
     border-radius: 10px;
   }
 }
-/* =====================================================
-   ABSOLUTE NAVBAR TYPOGRAPHY LOCK (FINAL FIX)
-   ===================================================== */
 
-.header.barista-nav,
-.header.barista-nav * {
-  font-family: "Poppins", sans-serif !important;
-}
+
+
 
 .header.barista-nav .nav-link,
 .header.barista-nav .dropdown-toggle {
@@ -3560,4 +3033,88 @@ body.lg-overlay-open .scroll-top {
   visibility: hidden !important;
   pointer-events: none !important;
   z-index: 0 !important;
+}
+
+/* =========================================================
+   BARISTA NAVBAR – SINGLE SOURCE OF TRUTH (FINAL)
+   ========================================================= */
+
+.header.barista-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 997;
+  background: transparent;
+}
+
+.header.barista-nav .navbar {
+  margin-top: 8px;
+  padding: 8px 24px;
+  border-radius: 14px;
+
+  background: rgba(12, 14, 18, 0.80);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+
+  border: none;
+  box-shadow: none;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* LOGO SIZE – CHANGE HERE ONLY */
+.header
+
+/* NAV LINKS */
+.header.barista-nav .nav-link {
+  color: var(--nav-color);
+  font-family: var(--nav-font);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 14px;
+  transition: color 0.2s ease;
+}
+
+.header.barista-nav .nav-link:hover,
+.header.barista-nav .nav-link.active,
+.header.barista-nav .dropdown-toggle.show {
+  color: #ffffff;
+}
+
+.header.barista-nav .nav-link:focus,
+.header.barista-nav .dropdown-toggle:focus {
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+/* DROPDOWN */
+.header.barista-nav .dropdown-menu {
+  background: rgba(12, 14, 18, 0.55);
+  backdrop-filter: blur(6px) saturate(115%);
+  border-radius: 10px;
+  padding: 10px 0;
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+  .header.barista-nav .navbar {
+    border-radius: 12px;
+  }
+
+  .header
+}
+
+/* Disable global header glass when using Barista navbar */
+.header.barista-nav::before {
+  display: none !important;
+}
+
+
+/* LOGO SIZE – SINGLE SOURCE */
+.header.barista-nav .navbar-brand-image {
+  max-height: 50px;
+  width: auto;
 }

@@ -9,7 +9,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const mount = document.getElementById("site-header");
   if (mount) {
-    fetch("assets/partials/header.html")
+    fetch("/assets/partials/header.html")
       .then(r => r.text())
       .then(html => {
         mount.innerHTML = html;
