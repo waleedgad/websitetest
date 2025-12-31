@@ -3118,3 +3118,12 @@ body.lg-overlay-open .scroll-top {
   max-height: 50px;
   width: auto;
 }
+
+/* Center service icons ONLY on mobile */
+@media (max-width: 767px) {
+  .services .service-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
