@@ -126,8 +126,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       fullScreen: false,
 
       /* 🔒 MOBILE UX */
-      closable: !isMobile,        // ❌ tap to close disabled on mobile
-      escKey: !isMobile,          // ❌ ESC disabled on mobile
+      closable: true,        // ❌ tap to close disabled on mobile
+      escKey: true,          // ❌ ESC disabled on mobile
       swipeToClose: true,         // ✅ swipe down closes
       hideScrollbar: true         // ✅ stop page scrolling
     });
