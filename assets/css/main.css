@@ -3119,11 +3119,20 @@ body.lg-overlay-open .scroll-top {
   width: auto;
 }
 
-/* Center service icons ONLY on mobile */
+/* Mobile-only: center service icons */
 @media (max-width: 767px) {
+
+  .services .service-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   .services .service-icon {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
   }
+
 }
