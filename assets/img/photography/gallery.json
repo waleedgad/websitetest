@@ -1,6 +1,108 @@
 {
   "projects": [
     {
+      "id": "portsaid",
+      "title": "Portsaid",
+      "categories": [
+        "Street Photography"
+      ],
+      "allCategories": [
+        "Street Photography",
+        "Walks"
+      ],
+      "path": "assets/img/photography/Portsaid/",
+      "cover": "cover.jpg",
+      "images": [
+        "cover.jpg",
+        "01.jpg",
+        "02.jpg",
+        "03.jpg",
+        "04.jpg",
+        "05.jpg",
+        "06.jpg",
+        "08.jpg",
+        "09.jpg",
+        "10.jpg",
+        "12.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "schools",
+      "title": "Smart City",
+      "categories": [
+        "Schools"
+      ],
+      "allCategories": [
+        "Schools",
+        "Portrait",
+        "Events"
+      ],
+      "path": "assets/img/photography/Schools/",
+      "cover": "2cdf31130333485.62a0daf9dbb30.jpg",
+      "images": [
+        "2cdf31130333485.62a0daf9dbb30.jpg",
+        "32Firefly_Flux_Enhance this architectural photo of a modern international school to look clean, real 518751.png",
+        "34d6d9145386549.629de42cc83dd.jpg",
+        "3d948f130333485.617dcb6a31119.jpg",
+        "5df0bc145386549.629de42c0bd36.jpg",
+        "6aa926145386549.629de42c0b114.jpg",
+        "6b43b9145386549.629de42c72ec1.jpg",
+        "8dce43145386549.629de42cc8ec2.jpg",
+        "9eb0c1145386549.629dee1c8851e.jpg",
+        "9fd754145386549.629de54e8c732.jpg",
+        "9fee7a130333485.617dcb6a302dc.jpg",
+        "Firefly_Flux_Enhance this architectural photo of a modern international school to look clean, real 518751 copy.png",
+        "Firefly_Flux_Enhance this architectural photo of a modern international school to look clean, real 518751.png",
+        "Firefly_Gemini Flash_remove cars & distractions 840675.png",
+        "b1f09e145386549.629de42c72577.jpg",
+        "b9462e130333485.617dcb6a309a2.jpg",
+        "c7c381145386549.629de42cc7af0.jpg",
+        "cc9bb6195006171.68e135e2e2197.jpg",
+        "cf8c6c130333485.617dcb6a2fd3d.jpg",
+        "db57e6145386549.629de42c0a8d7.jpg",
+        "dfbd2f130333485.62a35df43f999.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "beverage",
+      "title": "Beverages",
+      "categories": [
+        "Food & Beverage"
+      ],
+      "allCategories": [
+        "Food & Beverage"
+      ],
+      "path": "assets/img/photography/beverage/",
+      "cover": "cover.jpg",
+      "images": [
+        "cover.jpg",
+        "03a187129442933.68e1c143669cc.jpg",
+        "3c6bd6129442933.68e1c146a38ff.jpg",
+        "484e07129442933.68e1c14ade684.jpg",
+        "4ac622129442933.68e1c14bdd376.jpg",
+        "541516129442933.68e1c1421ffda.jpg",
+        "59f7f7129442933.68e1c149d00a9.jpg",
+        "77d444129442933.68e1c148e7ec4.jpg",
+        "7ff96e129442933.68e1c14a75815.jpg",
+        "a42002129442933.68e1c144d04bb.jpg",
+        "a645d7129442933.68e1c1417da38.jpg",
+        "b12258129442933.68e1c14626102.jpg",
+        "db620a129442933.68e1c1426e197.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
       "id": "candles",
       "title": "Enlighten Candles",
       "categories": [
@@ -13,34 +115,131 @@
       "path": "assets/img/photography/candles/",
       "cover": "226c2d234061747.68da176d2cc8b.png",
       "images": [
-        {
-          "file": "226c2d234061747.68da176d2cc8b.png",
-          "ai": true
-        },
-        {
-          "file": "6e4b82234061747.68bcfb227ee93.jpg",
-          "ai": true
-        },
-        {
-          "file": "88a8f3234061747.68bcfb227fc3b.jpg",
-          "ai": true
-        },
-        {
-          "file": "c0d933234061747.68bcfb227e93c.jpg",
-          "ai": true
-        },
-        {
-          "file": "c6705f234061747.68bcfb227d91e.jpg",
-          "ai": true
-        },
-        {
-          "file": "cfdf2f234061747.68bcfb227f3d7.jpg",
-          "ai": true
-        },
-        {
-          "file": "d2e4db234061747.68bcfb227e101.jpg",
-          "ai": true
-        }
+        "226c2d234061747.68da176d2cc8b.png",
+        "6e4b82234061747.68bcfb227ee93.jpg",
+        "88a8f3234061747.68bcfb227fc3b.jpg",
+        "c0d933234061747.68bcfb227e93c.jpg",
+        "c6705f234061747.68bcfb227d91e.jpg",
+        "cfdf2f234061747.68bcfb227f3d7.jpg",
+        "d2e4db234061747.68bcfb227e101.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "chef",
+      "title": "Le Chef",
+      "categories": [
+        "Portrait"
+      ],
+      "allCategories": [
+        "Portrait",
+        "Studio Photography"
+      ],
+      "path": "assets/img/photography/chef/",
+      "cover": "cover.jpg",
+      "images": [
+        "cover.jpg",
+        "15284c136871431.620181d46ef1b.jpg",
+        "4f5d3e136871431.62558cb88576e.jpg",
+        "77af87136871431.620181d46e9fe.jpg",
+        "8e6a2d136871431.62558cb8866b1.jpg",
+        "9b658b136871431.62558cb886025.jpg",
+        "d3c746136871431.620181d46f3c7.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "gang",
+      "title": "The Gang",
+      "categories": [
+        "Portrait"
+      ],
+      "allCategories": [
+        "Portrait",
+        "Lifestyle"
+      ],
+      "path": "assets/img/photography/gang/",
+      "cover": "10e245145873775.68e80cfc03969.jpg",
+      "images": [
+        "10e245145873775.68e80cfc03969.jpg",
+        "6d8a13145873775.62a6976fafbfa.jpg",
+        "f6314e145873775.68e80cfc03183.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "m-e",
+      "title": "Creativity Hypothesis",
+      "categories": [
+        "Portrait"
+      ],
+      "allCategories": [
+        "Portrait",
+        "Studio Photography"
+      ],
+      "path": "assets/img/photography/m-e/",
+      "cover": "cover.jpg",
+      "images": [
+        "cover.jpg",
+        "1a3109171491979.646f6945af324.jpg",
+        "8d5b7e171491979.64711e6a08232.jpg",
+        "e90d57171491979.646f6945b06d8.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "more-photos",
+      "title": "Maven International School",
+      "categories": [
+        "Schools"
+      ],
+      "allCategories": [
+        "Schools",
+        "Portraits"
+      ],
+      "path": "assets/img/photography/more photos/",
+      "cover": "34FlagMockup003 copy 2.jpg",
+      "images": [
+        "34FlagMockup003 copy 2.jpg",
+        "FlagMockup003 copy 2.jpg",
+        "Free_Pen_Mockup_3 copy 2.jpg",
+        "OQ3A4J1 copy 3.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "redbird",
+      "title": "Redbird",
+      "categories": [
+        "Food & Beverage"
+      ],
+      "allCategories": [
+        "Food & Beverage",
+        "Lifestyle"
+      ],
+      "path": "assets/img/photography/redbird/",
+      "cover": "cover.jpg",
+      "images": [
+        "cover.jpg",
+        "01.jpg",
+        "02.jpg",
+        "03.jpg",
+        "04.jpg"
       ],
       "location": "",
       "date": "",
