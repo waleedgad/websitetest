@@ -4,7 +4,9 @@
   "description": "",
   "main": "generate-gallery.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gallery": "node generate-gallery.js",
+    "gallery:watch": "node generate-gallery.js --watch"
   },
   "repository": {
     "type": "git",
