@@ -21,7 +21,8 @@
         "06.jpg",
         "08.jpg",
         "09.jpg",
-        "10.jpg"
+        "10.jpg",
+        "12.jpg"
       ],
       "location": "Egypt",
       "date": "",
@@ -36,7 +37,8 @@
       ],
       "allCategories": [
         "Schools",
-        "Architecture"
+        "Portraits",
+        "Events"
       ],
       "path": "assets/img/photography/Schools/",
       "cover": "2cdf31130333485.62a0daf9dbb30.jpg",
@@ -62,20 +64,75 @@
         "db57e6145386549.629de42c0a8d7.jpg",
         "dfbd2f130333485.62a35df43f999.jpg"
       ],
-      "location": "Egypt",
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "beverage",
+      "title": "Summer Drinks",
+      "categories": [
+        "Food & Beverage"
+      ],
+      "allCategories": [
+        "Food & Beverage",
+        "Lifestyle"
+      ],
+      "path": "assets/img/photography/beverage/",
+      "cover": "cover.jpg",
+      "images": [
+        "03a187129442933.68e1c143669cc.jpg",
+        "3c6bd6129442933.68e1c146a38ff.jpg",
+        "484e07129442933.68e1c14ade684.jpg",
+        "4ac622129442933.68e1c14bdd376.jpg",
+        "541516129442933.68e1c1421ffda.jpg",
+        "59f7f7129442933.68e1c149d00a9.jpg",
+        "77d444129442933.68e1c148e7ec4.jpg",
+        "7ff96e129442933.68e1c14a75815.jpg",
+        "a42002129442933.68e1c144d04bb.jpg",
+        "a645d7129442933.68e1c1417da38.jpg",
+        "b12258129442933.68e1c14626102.jpg",
+        "db620a129442933.68e1c1426e197.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "m-e",
+      "title": "Creativity Hypothesis",
+      "categories": [
+        "Portraits"
+      ],
+      "allCategories": [
+        "Portraits",
+        "Personal Branding",
+        "Studio"
+      ],
+      "path": "assets/img/photography/m-e/",
+      "cover": "cover.jpg",
+      "images": [
+        "1a3109171491979.646f6945af324.jpg",
+        "50ce36171491979.646f979c7875b.jpg",
+        "8d5b7e171491979.64711e6a08232.jpg",
+        "e90d57171491979.646f6945b06d8.jpg"
+      ],
+      "location": "",
       "date": "",
       "description": "",
       "order": null
     },
     {
       "id": "more-photos",
-      "title": "Maven",
+      "title": "Maven Intl",
       "categories": [
         "Schools"
       ],
       "allCategories": [
         "Schools",
-        "Logo"
+        "Portraits"
       ],
       "path": "assets/img/photography/more photos/",
       "cover": "34FlagMockup003 copy 2.jpg",

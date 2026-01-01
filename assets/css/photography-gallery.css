@@ -99,8 +99,9 @@
 }
 
 /* Hover */
-.photography-gallery .project-card:hover img {
+.photography-gallery .project-card:hover .project-cover {
   transform: scale(1.05);
+}
 }
 
 /* OVERLAY */
