@@ -18,29 +18,78 @@ const ask = (q) =>
     process.exit(1);
   }
 
-  const folders = fs.readdirSync(ROOT).filter((f) =>
-    fs.statSync(path.join(ROOT, f)).isDirectory()
-  );
+  const folders = fs
+    .readdirSync(ROOT)
+    .filter((f) => fs.statSync(path.join(ROOT, f)).isDirectory());
 
-  for (const folder of folders) {
+  if (!folders.length) {
+    console.log("⚠️ No project folders found.");
+    process.exit(0);
+  }
+
+  console.log("\n📁 Found project folders:\n");
+  folders.forEach((f, i) => {
+    console.log(`${i + 1}) ${f}`);
+  });
+
+  console.log(`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Type:
+• all        → update all folders
+• 1,3,5      → update selected folders
+• (enter)    → cancel
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+`);
+
+  const input = await ask("Which folders do you want to update? ");
+
+  if (!input) {
+    console.log("❌ Cancelled. No changes made.");
+    rl.close();
+    process.exit(0);
+  }
+
+  let selectedFolders = [];
+
+  if (input.toLowerCase() === "all") {
+    selectedFolders = folders;
+  } else {
+    const indexes = input
+      .split(",")
+      .map((n) => parseInt(n.trim(), 10))
+      .filter((n) => !isNaN(n) && n >= 1 && n <= folders.length);
+
+    selectedFolders = indexes.map((i) => folders[i - 1]);
+  }
+
+  if (!selectedFolders.length) {
+    console.log("❌ No valid selection.");
+    rl.close();
+    process.exit(0);
+  }
+
+  console.log("\n✅ Updating:\n", selectedFolders.join(", "), "\n");
+
+  for (const folder of selectedFolders) {
     const folderPath = path.join(ROOT, folder);
     const metaPath = path.join(folderPath, "_meta.json");
 
-    console.log(`\n📁 Project folder: ${folder}`);
+    console.log(`\n📁 ${folder}`);
     console.log("👉 FIRST category = filter category\n");
 
-    const title = (await ask("Title (enter to use folder name): ")) || folder;
+    const title = (await ask("Title (enter = folder name): ")) || folder;
 
     const categoriesInput = await ask(
       "Categories (comma separated, FIRST is filter): "
     );
+
     const categories = categoriesInput
       .split(",")
       .map((c) => c.trim())
       .filter(Boolean);
 
     if (!categories.length) {
-      console.log("⚠️ At least ONE category is required. Skipping.\n");
+      console.log("⚠️ At least ONE category required. Skipping.");
       continue;
     }
 
@@ -60,7 +109,7 @@ const ask = (q) =>
 
     const meta = {
       title,
-      categories, // order matters
+      categories,
       location,
       date,
       description,
@@ -73,4 +122,5 @@ const ask = (q) =>
   }
 
   rl.close();
+  console.log("\n🎉 Done. Run generate-gallery.js when ready.\n");
 })();

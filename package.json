@@ -1,0 +1,24 @@
+{
+  "name": "websitetest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-gallery.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsgad/websitetest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/wsgad/websitetest/issues"
+  },
+  "homepage": "https://github.com/wsgad/websitetest#readme",
+  "dependencies": {
+    "chokidar": "^5.0.0"
+  }
+}
