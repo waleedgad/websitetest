@@ -3177,3 +3177,35 @@ body.lg-overlay-open .scroll-top {
   }
 
 }
+/* ==============================
+   PORTFOLIO — VIRTUAL TOUR
+   ============================== */
+
+.portfolio-virtual-tour {
+  width: 100%;
+}
+
+.kuula-embed-wrapper {
+  position: relative;
+  width: 100%;
+  height: 520px;          /* desktop */
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+/* Tablet & Mobile */
+@media (max-width: 991px) {
+  .kuula-embed-wrapper {
+    height: 420px;
+  }
+}
+
+@media (max-width: 576px) {
+  .kuula-embed-wrapper {
+    height: 85vh;
+    border-radius: 0;
+  }
+}
