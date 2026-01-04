@@ -3202,7 +3202,21 @@ body.lg-overlay-open .scroll-top {
     height: 420px;
   }
 }
+/* MOBILE: tighten portfolio header spacing */
+@media (max-width: 576px) {
+  .portfolio-details .section-title {
+    padding-bottom: 32px;
+  }
 
+  .portfolio-details .section-title h2 {
+    margin-bottom: 12px;
+  }
+
+  .portfolio-details .section-title p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
 @media (max-width: 576px) {
   .kuula-embed-wrapper {
     height: 85vh;
