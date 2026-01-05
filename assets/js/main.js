@@ -210,10 +210,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const cfg = el.querySelector(".swiper-config");
       if (!cfg) return;
       const config = JSON.parse(cfg.innerHTML.trim());
-      new Swiper(el, config);
+      el.swiper = new Swiper(el, config);
     });
   });
+/* ===============================
+   PORTFOLIO THUMBNAILS → SWIPER
+   =============================== */
+document.addEventListener("click", e => {
+  const thumb = e.target.closest(".portfolio-thumb");
+  if (!thumb) return;
 
+  const slider = document.querySelector(".portfolio-details-slider");
+  if (!slider || !slider.swiper) return;
+
+  const index = Number(thumb.dataset.slideIndex);
+  slider.swiper.slideToLoop(index);
+});
   /* ===============================
      ISOTOPE
      =============================== */
