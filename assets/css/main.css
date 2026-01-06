@@ -2192,7 +2192,10 @@ section,
 .portfolio .portfolio-card .portfolio-info .portfolio-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px 8px;
+  max-width: 100%;
+  max-height: calc(2 * 1.6em); /* limit vertical growth */
+  overflow: hidden;
 }
 
 .portfolio .portfolio-card .portfolio-info .portfolio-tags span {
