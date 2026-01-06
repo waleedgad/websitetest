@@ -1,11 +1,12 @@
 {
   "title": "Interiors",
   "categories": [
-    "Interiors",
-    "Real-estate"
+    "Real estate",
+    "Interiors"
   ],
   "location": "",
   "date": "",
   "description": "",
-  "cover": "4U6A9213-Edit.jpg"
+  "cover": "4U6A9213-Edit.jpg",
+  "order": null
 }
