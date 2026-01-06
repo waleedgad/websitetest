@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const gridEl = document.querySelector(".gallery-container");
   if (!filtersEl || !gridEl) return;
 
-  const res = await fetch("assets/img/photography/gallery.json");
+  const res = await fetch("/assets/img/photography/gallery.json");
   const data = await res.json();
   const projects = data.projects || [];
 

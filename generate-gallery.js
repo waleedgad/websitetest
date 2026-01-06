@@ -2,26 +2,44 @@ const chokidar = require("chokidar");
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = "assets/img/photography";
-const OUTPUT = path.join(ROOT, "gallery.json");
+/* -------------------------------------------------------
+   PATHS
+------------------------------------------------------- */
+
+// Filesystem path (Node.js)
+const FS_ROOT = path.join(__dirname, "assets", "img", "photography");
+
+// Browser URL base (root-relative)
+const URL_ROOT = "/assets/img/photography";
+
+// Output file
+const OUTPUT = path.join(FS_ROOT, "gallery.json");
+
+// Flags
 const WATCH = process.argv.includes("--watch");
 
-if (!fs.existsSync(ROOT)) {
-  console.error("❌ Photography folder not found:", ROOT);
+/* -------------------------------------------------------
+   SAFETY CHECK
+------------------------------------------------------- */
+if (!fs.existsSync(FS_ROOT)) {
+  console.error("❌ Photography folder not found:", FS_ROOT);
   process.exit(1);
 }
 
 let debounceTimer = null;
 
+/* -------------------------------------------------------
+   BUILD GALLERY
+------------------------------------------------------- */
 function buildGallery() {
   const projects = [];
 
   const folders = fs
-    .readdirSync(ROOT)
-    .filter((f) => fs.statSync(path.join(ROOT, f)).isDirectory());
+    .readdirSync(FS_ROOT)
+    .filter((f) => fs.statSync(path.join(FS_ROOT, f)).isDirectory());
 
   for (const folder of folders) {
-    const folderPath = path.join(ROOT, folder);
+    const folderPath = path.join(FS_ROOT, folder);
     const metaPath = path.join(folderPath, "_meta.json");
 
     if (!fs.existsSync(metaPath)) continue;
@@ -41,7 +59,9 @@ function buildGallery() {
       .readdirSync(folderPath)
       .filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
 
-    // 🔑 COVER FIRST IN GALLERY
+    if (!allImages.length) continue;
+
+    // 🔑 COVER FIRST
     const images = meta.cover
       ? [
           meta.cover,
@@ -49,40 +69,56 @@ function buildGallery() {
         ]
       : allImages;
 
+    // 🔑 URL-safe folder name (KEEP FOLDER AS-IS)
+    const urlFolder = encodeURIComponent(folder);
+
     projects.push({
+      // ID can still be slug-like internally
       id: folder.toLowerCase().replace(/\s+/g, "-"),
+
       title: meta.title,
       categories: [meta.categories[0]],
       allCategories: meta.categories,
-      path: `${ROOT}/${folder}/`,
-      cover: meta.cover,
-      images, // 👈 cover is images[0]
+
+      // ✅ URL-safe, root-relative path
+      path: `${URL_ROOT}/${urlFolder}/`,
+
+      cover: meta.cover || images[0],
+      images,
       location: meta.location || "",
       date: meta.date || "",
       description: meta.description || "",
-      order: meta.order
+      order: meta.order ?? null
     });
   }
 
+  // Sort by order
   projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
   fs.writeFileSync(OUTPUT, JSON.stringify({ projects }, null, 2));
   console.log(`✅ gallery.json generated (${projects.length} projects)`);
 }
 
+/* -------------------------------------------------------
+   DEBOUNCE
+------------------------------------------------------- */
 function debounceBuild() {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(buildGallery, 300);
 }
 
-// Initial build
+/* -------------------------------------------------------
+   INITIAL BUILD
+------------------------------------------------------- */
 buildGallery();
 
-// WATCH MODE
+/* -------------------------------------------------------
+   WATCH MODE
+------------------------------------------------------- */
 if (WATCH) {
   console.log("👀 Watch mode enabled…");
 
-  fs.watch(ROOT, { recursive: true }, (event, filename) => {
+  fs.watch(FS_ROOT, { recursive: true }, (event, filename) => {
     if (!filename) return;
 
     if (

@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "id": "grads-photos",
+      "id": "gradphotos",
       "title": "Graduation Photos",
       "categories": [
         "Schools"
@@ -11,7 +11,7 @@
         "Portrait",
         "Studio"
       ],
-      "path": "assets/img/photography/Grads photos/",
+      "path": "/assets/img/photography/Gradphotos/",
       "cover": "175f4b130333485.617dcb6a90e74.jpg",
       "images": [
         "175f4b130333485.617dcb6a90e74.jpg",
@@ -34,7 +34,7 @@
       "allCategories": [
         "Food & Beverage"
       ],
-      "path": "assets/img/photography/beverage/",
+      "path": "/assets/img/photography/beverage/",
       "cover": "cover.jpg",
       "images": [
         "cover.jpg",
@@ -65,7 +65,7 @@
       "allCategories": [
         "Portrait"
       ],
-      "path": "assets/img/photography/cellist/",
+      "path": "/assets/img/photography/cellist/",
       "cover": "60c5d9149524467.62e92d3cd88c9.jpg",
       "images": [
         "60c5d9149524467.62e92d3cd88c9.jpg",
@@ -86,7 +86,7 @@
         "Portrait",
         "Studio"
       ],
-      "path": "assets/img/photography/chef/",
+      "path": "/assets/img/photography/chef/",
       "cover": "cover.jpg",
       "images": [
         "cover.jpg",
@@ -111,7 +111,7 @@
       "allCategories": [
         "Portrait"
       ],
-      "path": "assets/img/photography/gang/",
+      "path": "/assets/img/photography/gang/",
       "cover": "10e245145873775.68e80cfc03969.jpg",
       "images": [
         "10e245145873775.68e80cfc03969.jpg",
@@ -133,7 +133,7 @@
         "Real estate",
         "Interiors"
       ],
-      "path": "assets/img/photography/interiors/",
+      "path": "/assets/img/photography/interiors/",
       "cover": "4U6A9213-Edit.jpg",
       "images": [
         "4U6A9213-Edit.jpg",
@@ -160,7 +160,7 @@
         "Schools",
         "Portrait"
       ],
-      "path": "assets/img/photography/maven/",
+      "path": "/assets/img/photography/maven/",
       "cover": "1F3A6680.jpg",
       "images": [
         "1F3A6680.jpg",
@@ -187,7 +187,7 @@
         "Portrait",
         "Studio"
       ],
-      "path": "assets/img/photography/mostafa/",
+      "path": "/assets/img/photography/mostafa/",
       "cover": "cover.jpg",
       "images": [
         "cover.jpg",
@@ -195,24 +195,6 @@
         "8d5b7e171491979.64711e6a08232.jpg",
         "e90d57171491979.646f6945b06d8.jpg"
       ],
-      "location": "",
-      "date": "",
-      "description": "",
-      "order": null
-    },
-    {
-      "id": "old-cairo-walk",
-      "title": "Old Cairo",
-      "categories": [
-        "Architecture"
-      ],
-      "allCategories": [
-        "Architecture",
-        "Walks"
-      ],
-      "path": "assets/img/photography/old cairo walk/",
-      "cover": "",
-      "images": [],
       "location": "",
       "date": "",
       "description": "",
@@ -228,7 +210,7 @@
         "Street Photography",
         "Walks"
       ],
-      "path": "assets/img/photography/portsaid/",
+      "path": "/assets/img/photography/portsaid/",
       "cover": "cover.jpg",
       "images": [
         "cover.jpg",
@@ -256,7 +238,7 @@
         "Schools",
         "Architecture"
       ],
-      "path": "assets/img/photography/schools facilities/",
+      "path": "/assets/img/photography/schools%20facilities/",
       "cover": "1F3A6537-HDR-Edit.jpg",
       "images": [
         "1F3A6537-HDR-Edit.jpg",
