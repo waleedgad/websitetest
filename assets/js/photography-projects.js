@@ -49,12 +49,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     col.innerHTML = `
       <div class="project-card is-loading">
         <img
-          src="${p.path + p.cover}"
-          class="project-cover"
-          alt="${p.title}"
-          loading="lazy"
-          decoding="async"
-        >
+  src="${p.path + p.cover}"
+  class="project-cover"
+  alt="${p.title}"
+  width="800"
+  height="600"
+  loading="lazy"
+  decoding="async"
+>
 
         <div class="lg-items">
           ${galleryAnchors}
@@ -112,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
-  document.querySelectorAll(".project-card").forEach(card => {
+  document.querySelectorAll(".project-card").forEach((card, index) => {
     const gallery = card.querySelector(".lg-items");
 
     const lgInstance = lightGallery(gallery, {
