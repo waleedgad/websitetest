@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   bindImageLoad(gridEl);
-  imagesLoaded(gridEl).on("progress", scheduleLayout);imagesLoaded(gridEl, scheduleLayout);
+  imagesLoaded(gridEl, scheduleLayout);
 
   filtersEl.addEventListener("click", e => {
     if (!e.target.classList.contains("filter-btn")) return;
