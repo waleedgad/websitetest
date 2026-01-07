@@ -57,6 +57,32 @@
       "order": null
     },
     {
+      "id": "candles",
+      "title": "Enlighten Candles",
+      "categories": [
+        "Product Photography"
+      ],
+      "allCategories": [
+        "Product Photography",
+        "E-Ccommerce"
+      ],
+      "path": "/assets/img/photography/candles/",
+      "cover": "226c2d234061747.68da176d2cc8b.png",
+      "images": [
+        "226c2d234061747.68da176d2cc8b.png",
+        "6e4b82234061747.68bcfb227ee93.jpg",
+        "88a8f3234061747.68bcfb227fc3b.jpg",
+        "c0d933234061747.68bcfb227e93c.jpg",
+        "c6705f234061747.68bcfb227d91e.jpg",
+        "cfdf2f234061747.68bcfb227f3d7.jpg",
+        "d2e4db234061747.68bcfb227e101.jpg"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
       "id": "cellist",
       "title": "The Cellist",
       "categories": [
