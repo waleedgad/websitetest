@@ -16,7 +16,6 @@
 }
 
 .photography-gallery .filter-btn {
-  /* use portfolio filter color system (accent-based pills) */
   padding: 8px 20px;
   font-size: 0.95rem;
   font-weight: 500;
@@ -93,7 +92,7 @@
   transform: scale(1.05);
 }
 
-/* OVERLAY — ALWAYS VISIBLE */
+/* OVERLAY */
 .photography-gallery .project-overlay {
   position: absolute;
   inset: 0;
@@ -109,14 +108,13 @@
   pointer-events: none;
 }
 
-/* TEXT — LOWER BEFORE HOVER */
+/* TEXT */
 .photography-gallery .project-title {
   color: #fff;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.15;
-
-  transform: translateY(28px); /* ✅ sits LOWER before hover */
+  transform: translateY(28px);
   transition: transform 0.4s ease;
 }
 
@@ -126,15 +124,14 @@
   letter-spacing: 0.08em;
   line-height: 1.15;
   margin-top: 4px;
-
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* HOVER — REVEAL */
+/* HOVER */
 .photography-gallery .project-card:hover .project-title {
-  transform: translateY(0); /* ✅ moves up into place */
+  transform: translateY(0);
 }
 
 .photography-gallery .project-card:hover .project-categories {
@@ -142,27 +139,25 @@
   transform: translateY(0);
 }
 
-/* MOBILE — ALWAYS VISIBLE */
+/* MOBILE */
 @media (max-width: 768px) {
-  .photography-gallery .project-title {
-    transform: none;
-  }
-
+  .photography-gallery .project-title,
   .photography-gallery .project-categories {
-    opacity: 1;
     transform: none;
+    opacity: 1;
   }
 }
 
-/* ===============================
-   MOBILE — FILTER SPACING FIX
-   =============================== */
+/* FILTER SPACING */
 @media (max-width: 768px) {
   .photography-gallery .gallery-filters {
     gap: 12px 16px;
     margin-bottom: 24px;
   }
 }
+
+/* ✅ LCP STABILITY */
 .photography-page .section-title h2 {
   min-height: 48px;
+  will-change: opacity, transform;
 }
