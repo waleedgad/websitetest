@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       .map(([k, v]) => `<button class="filter-btn" data-filter=".${k}">${v}</button>`)
       .join("");
 
+  /* ✅ SIGNAL: UI READY (TITLE + FILTERS DONE) */
+  document.dispatchEvent(new CustomEvent("gallery:ui-ready"));
+
   /* GRID */
   projects.forEach(p => {
     const col = document.createElement("div");
