@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof window.initNavMenu === "function") {
           window.initNavMenu();
         }
-        // initialize theme toggle after header injection (if available)
         if (typeof window.initThemeToggle === "function") {
           window.initThemeToggle();
         }
@@ -108,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
       anchor.dataset.navInit = "true";
     });
 
-    /* Outside click close */
     if (!document.body.dataset.navOutsideInit) {
       document.addEventListener("click", e => {
         if (!isMobile()) return;
@@ -138,11 +136,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ===============================
-     PRELOADER
+     PRELOADER (FIXED PER PAGE)
      =============================== */
   const preloader = document.querySelector("#preloader");
+
   if (preloader) {
-    window.addEventListener("load", () => preloader.remove());
+    if (document.body.classList.contains("photography-page")) {
+      document.addEventListener("gallery:ui-ready", () => {
+        preloader.remove();
+      });
+    } else {
+      window.addEventListener("load", () => {
+        preloader.remove();
+      });
+    }
   }
 
   /* ===============================
@@ -213,19 +220,21 @@ document.addEventListener("DOMContentLoaded", () => {
       el.swiper = new Swiper(el, config);
     });
   });
-/* ===============================
-   PORTFOLIO THUMBNAILS → SWIPER
-   =============================== */
-document.addEventListener("click", e => {
-  const thumb = e.target.closest(".portfolio-thumb");
-  if (!thumb) return;
 
-  const slider = document.querySelector(".portfolio-details-slider");
-  if (!slider || !slider.swiper) return;
+  /* ===============================
+     PORTFOLIO THUMBNAILS → SWIPER
+     =============================== */
+  document.addEventListener("click", e => {
+    const thumb = e.target.closest(".portfolio-thumb");
+    if (!thumb) return;
 
-  const index = Number(thumb.dataset.slideIndex);
-  slider.swiper.slideToLoop(index);
-});
+    const slider = document.querySelector(".portfolio-details-slider");
+    if (!slider || !slider.swiper) return;
+
+    const index = Number(thumb.dataset.slideIndex);
+    slider.swiper.slideToLoop(index);
+  });
+
   /* ===============================
      ISOTOPE
      =============================== */
@@ -273,23 +282,17 @@ document.addEventListener("click", e => {
     });
   }
 
-  /* ======================================================
-     IMAGE PROTECTION — SAFE (FIXED)
-     ====================================================== */
+  /* ===============================
+     IMAGE PROTECTION
+     =============================== */
   document.addEventListener("contextmenu", e => {
-    if (
-      e.target.closest("img") &&
-      !e.target.closest(".lg-outer")
-    ) {
+    if (e.target.closest("img") && !e.target.closest(".lg-outer")) {
       e.preventDefault();
     }
   });
 
   document.addEventListener("dragstart", e => {
-    if (
-      e.target.closest("img") &&
-      !e.target.closest(".lg-outer")
-    ) {
+    if (e.target.closest("img") && !e.target.closest(".lg-outer")) {
       e.preventDefault();
     }
   });
@@ -313,14 +316,9 @@ document.addEventListener("click", e => {
     }
   });
 
-  // ❌ GLightbox REMOVED
   /* ===============================
-     THEME TOGGLE (light / dark)
-     - toggles `light-background` / `dark-background` on <body>
-     - persists choice in localStorage
-     - respects `prefers-color-scheme` when no saved preference
+     THEME TOGGLE
      =============================== */
-
   const THEME_KEY = "siteTheme";
 
   function applyThemeClass(theme) {
@@ -342,7 +340,7 @@ document.addEventListener("click", e => {
   function detectPreferredTheme() {
     const saved = getSavedTheme();
     if (saved) return saved;
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) return "light";
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) return "light";
     return "dark";
   }
 
@@ -354,7 +352,10 @@ document.addEventListener("click", e => {
     applyThemeClass(current);
 
     function updateButton() {
-      const theme = getSavedTheme() || (document.body.classList.contains("light-background") ? "light" : "dark");
+      const theme =
+        getSavedTheme() ||
+        (document.body.classList.contains("light-background") ? "light" : "dark");
+
       if (btn) btn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
       if (icon) {
         icon.classList.toggle("bi-sun", theme === "light");
@@ -366,10 +367,17 @@ document.addEventListener("click", e => {
 
     if (!btn.dataset.themeInit) {
       btn.addEventListener("click", () => {
-        const now = (getSavedTheme() || (document.body.classList.contains("light-background") ? "light" : "dark")) === "light" ? "dark" : "light";
+        const now =
+          (getSavedTheme() ||
+            (document.body.classList.contains("light-background") ? "light" : "dark")) ===
+          "light"
+            ? "dark"
+            : "light";
+
         try {
           localStorage.setItem(THEME_KEY, now);
         } catch (e) {}
+
         applyThemeClass(now);
         updateButton();
       });
@@ -379,7 +387,6 @@ document.addEventListener("click", e => {
     updateButton();
   };
 
-  // initialize on load in case header is present without injection timing
   window.addEventListener("load", () => {
     if (typeof window.initThemeToggle === "function") window.initThemeToggle();
   });
