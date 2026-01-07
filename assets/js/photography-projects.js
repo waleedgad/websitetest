@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
-  /* FILTERS */
+  /* ===============================
+     FILTERS
+     =============================== */
   const filterMap = new Map();
   projects.forEach(p => {
     if (p.categories?.length) {
@@ -23,11 +25,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       .map(([k, v]) => `<button class="filter-btn" data-filter=".${k}">${v}</button>`)
       .join("");
 
-  /* ✅ SIGNAL: UI READY (TITLE + FILTERS DONE) */
+  /* ✅ UI READY — REMOVE PRELOADER */
   document.dispatchEvent(new CustomEvent("gallery:ui-ready"));
 
-  /* GRID */
-  projects.forEach(p => {
+  /* ===============================
+     RENDER HELPERS
+     =============================== */
+  const createCard = p => {
     const col = document.createElement("div");
     col.className = `col-lg-4 col-md-6 gallery-item ${slug(p.categories[0])}`;
 
@@ -36,7 +40,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         img => `
           <a
             href="${p.path + img}"
-            data-src="${p.path + img}"
             data-lg-thumb="${p.path + img}"
             data-sub-html="
               <h4>${p.title}</h4>
@@ -75,10 +78,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     `;
 
-    gridEl.appendChild(col);
+    return col;
+  };
+
+  /* ===============================
+     INITIAL RENDER (LIMITED)
+     =============================== */
+  const INITIAL_COUNT = window.innerWidth < 768 ? 6 : 9;
+  const initialProjects = projects.slice(0, INITIAL_COUNT);
+  const remainingProjects = projects.slice(INITIAL_COUNT);
+
+  initialProjects.forEach(p => {
+    gridEl.appendChild(createCard(p));
   });
 
-  /* ISOTOPE */
+  /* ===============================
+     ISOTOPE (AFTER INITIAL BATCH)
+     =============================== */
   const iso = new Isotope(gridEl, {
     itemSelector: ".gallery-item",
     layoutMode: "masonry",
@@ -86,32 +102,38 @@ document.addEventListener("DOMContentLoaded", async () => {
     masonry: { columnWidth: ".gallery-item" }
   });
 
-  /* Debounced layout */
   let layoutRAF;
   const scheduleLayout = () => {
     cancelAnimationFrame(layoutRAF);
     layoutRAF = requestAnimationFrame(() => iso.layout());
   };
 
-  /* PER-IMAGE LOAD (SKELETON → SHOW) */
-  gridEl.querySelectorAll(".project-cover").forEach(img => {
-    const card = img.closest(".project-card");
+  /* ===============================
+     IMAGE LOAD → SHOW
+     =============================== */
+  const bindImageLoad = scope => {
+    scope.querySelectorAll(".project-cover").forEach(img => {
+      const card = img.closest(".project-card");
 
-    if (img.complete) {
-      card.classList.remove("is-loading");
-      card.classList.add("is-loaded");
-    } else {
-      img.addEventListener("load", () => {
+      if (img.complete) {
         card.classList.remove("is-loading");
         card.classList.add("is-loaded");
-        scheduleLayout();
-      });
-    }
-  });
+      } else {
+        img.addEventListener("load", () => {
+          card.classList.remove("is-loading");
+          card.classList.add("is-loaded");
+          scheduleLayout();
+        });
+      }
+    });
+  };
 
+  bindImageLoad(gridEl);
   imagesLoaded(gridEl).on("progress", scheduleLayout);
 
-  /* FILTER CLICK */
+  /* ===============================
+     FILTER CLICK
+     =============================== */
   filtersEl.addEventListener("click", e => {
     if (!e.target.classList.contains("filter-btn")) return;
     filtersEl.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -119,34 +141,51 @@ document.addEventListener("DOMContentLoaded", async () => {
     iso.arrange({ filter: e.target.dataset.filter });
   });
 
-  /* =========================================
-     LIGHTGALLERY — LAZY INIT (PER CARD)
-     ========================================= */
+  /* ===============================
+     LOAD REMAINING PROJECTS (AFTER PAINT)
+     =============================== */
+  if (remainingProjects.length) {
+    setTimeout(() => {
+      const newItems = [];
 
-  document.querySelectorAll(".project-card").forEach(card => {
+      remainingProjects.forEach(p => {
+        const el = createCard(p);
+        gridEl.appendChild(el);
+        newItems.push(el);
+      });
+
+      iso.appended(newItems);
+      bindImageLoad(gridEl);
+      scheduleLayout();
+    }, 600);
+  }
+
+  /* ===============================
+     LIGHTGALLERY — LAZY INIT
+     =============================== */
+  document.addEventListener("click", e => {
+    const cover = e.target.closest(".project-cover");
+    if (!cover) return;
+
+    const card = cover.closest(".project-card");
     const gallery = card.querySelector(".lg-items");
-    let lgInstance = null;
 
-    card.querySelector(".project-cover").addEventListener("click", () => {
-      if (!lgInstance) {
-        lgInstance = lightGallery(gallery, {
-          selector: "a",
-          plugins: [lgThumbnail, lgZoom],
+    if (!gallery.lgInstance) {
+      gallery.lgInstance = lightGallery(gallery, {
+        selector: "a",
+        plugins: [lgThumbnail, lgZoom],
+        thumbnail: true,
+        zoom: false,
+        counter: true,
+        download: false,
+        fullScreen: false,
+        closable: true,
+        escKey: true,
+        swipeToClose: true,
+        hideScrollbar: true
+      });
+    }
 
-          thumbnail: true,
-          zoom: false,
-          counter: true,
-          download: false,
-          fullScreen: false,
-
-          closable: true,
-          escKey: true,
-          swipeToClose: true,
-          hideScrollbar: true
-        });
-      }
-
-      lgInstance.openGallery(0);
-    });
+    gallery.lgInstance.openGallery(0);
   });
 });
