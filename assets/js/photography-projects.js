@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             href="${p.path + img}"
             data-lg-thumb="${p.path + img}"
             data-sub-html="
-              <h4>${p.title}</h4>
-              <p>${p.description || ""}</p>
+              <div class='lg-title'>${p.title}</div>
+              <div class='lg-desc'>${p.description || ""}</div>
             "
           >
             <img src="${p.path + img}" class="d-none" alt="">
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   bindImageLoad(gridEl);
-  imagesLoaded(gridEl).on("progress", scheduleLayout);
+  imagesLoaded(gridEl).on("progress", scheduleLayout);imagesLoaded(gridEl, scheduleLayout);
 
   filtersEl.addEventListener("click", e => {
     if (!e.target.classList.contains("filter-btn")) return;
@@ -172,7 +172,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           items.push({
             src: p.path + img,
             thumb: p.path + img,
-            subHtml: `<h4>${p.title}</h4><p>${p.description || ""}</p>`
+            subHtml: `
+              <div class="lg-title">${p.title}</div>
+              <div class="lg-desc">${p.description || ""}</div>
+            `
           });
         });
       });
