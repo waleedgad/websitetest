@@ -3219,12 +3219,3 @@ body.lg-overlay-open .scroll-top {
     border-radius: 0;
   }
 }
-/* Force-hide GTM noscript iframe */
-noscript iframe {
-  display: none !important;
-  visibility: hidden !important;
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
