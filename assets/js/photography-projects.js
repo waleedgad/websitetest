@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           height="600"
           loading="lazy"
           decoding="async"
+          fetchpriority="low"
         >
 
         <div class="lg-items">
@@ -82,6 +83,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     masonry: { columnWidth: ".gallery-item" }
   });
 
+  /* Debounced layout */
+  let layoutRAF;
+  const scheduleLayout = () => {
+    cancelAnimationFrame(layoutRAF);
+    layoutRAF = requestAnimationFrame(() => iso.layout());
+  };
+
   /* PER-IMAGE LOAD (SKELETON → SHOW) */
   gridEl.querySelectorAll(".project-cover").forEach(img => {
     const card = img.closest(".project-card");
@@ -93,12 +101,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       img.addEventListener("load", () => {
         card.classList.remove("is-loading");
         card.classList.add("is-loaded");
-        iso.layout();
+        scheduleLayout();
       });
     }
   });
 
-  imagesLoaded(gridEl).on("progress", () => iso.layout());
+  imagesLoaded(gridEl).on("progress", scheduleLayout);
 
   /* FILTER CLICK */
   filtersEl.addEventListener("click", e => {

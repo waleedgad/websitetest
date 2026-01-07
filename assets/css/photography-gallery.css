@@ -163,3 +163,6 @@
     margin-bottom: 24px;
   }
 }
+.photography-page .section-title h2 {
+  min-height: 48px;
+}
