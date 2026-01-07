@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       .map(([k, v]) => `<button class="filter-btn" data-filter=".${k}">${v}</button>`)
       .join("");
 
-  /* ✅ UI READY — REMOVE PRELOADER */
   document.dispatchEvent(new CustomEvent("gallery:ui-ready"));
 
   /* ===============================
@@ -53,7 +52,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       .join("");
 
     col.innerHTML = `
-      <div class="project-card is-loading">
+      <div class="project-card is-loading"
+           data-project-id="${p.id}"
+           data-gallery-group="${p.gallery_group || ""}">
         <img
           src="${p.path + p.cover}"
           class="project-cover"
@@ -82,19 +83,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   /* ===============================
-     INITIAL RENDER (LIMITED)
+     INITIAL RENDER
      =============================== */
   const INITIAL_COUNT = window.innerWidth < 768 ? 6 : 9;
   const initialProjects = projects.slice(0, INITIAL_COUNT);
   const remainingProjects = projects.slice(INITIAL_COUNT);
 
-  initialProjects.forEach(p => {
-    gridEl.appendChild(createCard(p));
-  });
+  initialProjects.forEach(p => gridEl.appendChild(createCard(p)));
 
-  /* ===============================
-     ISOTOPE (AFTER INITIAL BATCH)
-     =============================== */
   const iso = new Isotope(gridEl, {
     itemSelector: ".gallery-item",
     layoutMode: "masonry",
@@ -108,9 +104,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     layoutRAF = requestAnimationFrame(() => iso.layout());
   };
 
-  /* ===============================
-     IMAGE LOAD → SHOW
-     =============================== */
   const bindImageLoad = scope => {
     scope.querySelectorAll(".project-cover").forEach(img => {
       const card = img.closest(".project-card");
@@ -131,9 +124,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   bindImageLoad(gridEl);
   imagesLoaded(gridEl).on("progress", scheduleLayout);
 
-  /* ===============================
-     FILTER CLICK
-     =============================== */
   filtersEl.addEventListener("click", e => {
     if (!e.target.classList.contains("filter-btn")) return;
     filtersEl.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -141,9 +131,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     iso.arrange({ filter: e.target.dataset.filter });
   });
 
-  /* ===============================
-     LOAD REMAINING PROJECTS (AFTER PAINT)
-     =============================== */
   if (remainingProjects.length) {
     setTimeout(() => {
       const newItems = [];
@@ -161,31 +148,59 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   /* ===============================
-     LIGHTGALLERY — LAZY INIT
+     LIGHTGALLERY — FIXED MERGED GALLERIES
      =============================== */
   document.addEventListener("click", e => {
     const cover = e.target.closest(".project-cover");
     if (!cover) return;
 
     const card = cover.closest(".project-card");
-    const gallery = card.querySelector(".lg-items");
+    const galleryGroup = card.dataset.galleryGroup;
 
-    if (!gallery.lgInstance) {
-      gallery.lgInstance = lightGallery(gallery, {
-        selector: "a",
-        plugins: [lgThumbnail, lgZoom],
-        thumbnail: true,
-        zoom: false,
-        counter: true,
-        download: false,
-        fullScreen: false,
-        closable: true,
-        escKey: true,
-        swipeToClose: true,
-        hideScrollbar: true
+    let items = [];
+
+    if (galleryGroup) {
+      const clickedId = card.dataset.projectId;
+
+      const orderedProjects = [
+        ...projects.filter(p => p.id === clickedId),
+        ...projects.filter(p => p.gallery_group === galleryGroup && p.id !== clickedId)
+      ];
+
+      orderedProjects.forEach(p => {
+        p.images.forEach(img => {
+          items.push({
+            src: p.path + img,
+            thumb: p.path + img,
+            subHtml: `<h4>${p.title}</h4><p>${p.description || ""}</p>`
+          });
+        });
+      });
+    } else {
+      card.querySelectorAll(".lg-items a").forEach(a => {
+        items.push({
+          src: a.getAttribute("href"),
+          thumb: a.getAttribute("data-lg-thumb"),
+          subHtml: a.getAttribute("data-sub-html")
+        });
       });
     }
 
-    gallery.lgInstance.openGallery(0);
+    const lg = lightGallery(document.createElement("div"), {
+      dynamic: true,
+      dynamicEl: items,
+      plugins: [lgThumbnail, lgZoom],
+      thumbnail: true,
+      zoom: false,
+      counter: true,
+      download: false,
+      fullScreen: false,
+      closable: true,
+      escKey: true,
+      swipeToClose: true,
+      hideScrollbar: true
+    });
+
+    lg.openGallery(0);
   });
 });

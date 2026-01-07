@@ -10,6 +10,7 @@
         "Schools",
         "Portrait"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/Gradphotos/",
       "cover": "175f4b130333485.617dcb6a90e74.webp",
       "images": [
@@ -34,6 +35,7 @@
         "Portrait",
         "Studio"
       ],
+      "gallery_group": "portraits",
       "path": "/assets/img/photography/animal/",
       "cover": "4aeac882349691.5d1b08425b894.webp",
       "images": [
@@ -56,6 +58,7 @@
       "allCategories": [
         "Food & Beverage"
       ],
+      "gallery_group": "beverage",
       "path": "/assets/img/photography/beverage/",
       "cover": "cover.webp",
       "images": [
@@ -88,6 +91,7 @@
         "Street Photography",
         "Portrait"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/bnw/",
       "cover": "09d9ca147379997.62c1ec77de9d5.webp",
       "images": [
@@ -125,6 +129,7 @@
         "Product Photography",
         "E-commerce"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/candles/",
       "cover": "226c2d234061747.68da176d2cc8b.webp",
       "images": [
@@ -150,6 +155,7 @@
       "allCategories": [
         "Portrait"
       ],
+      "gallery_group": "portraits",
       "path": "/assets/img/photography/cellist/",
       "cover": "60c5d9149524467.62e92d3cd88c9.webp",
       "images": [
@@ -171,6 +177,7 @@
         "Portrait",
         "Studio"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/chef/",
       "cover": "cover.webp",
       "images": [
@@ -197,6 +204,7 @@
         "Food & Beverage",
         "E-commerce"
       ],
+      "gallery_group": "beverage",
       "path": "/assets/img/photography/cordoba%20drinks/",
       "cover": "004527124389171.626801f1a0cca.webp",
       "images": [
@@ -230,6 +238,7 @@
       "allCategories": [
         "Portrait"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/gang/",
       "cover": "10e245145873775.68e80cfc03969.webp",
       "images": [
@@ -252,6 +261,7 @@
         "Portrait",
         "Studio"
       ],
+      "gallery_group": "portraits",
       "path": "/assets/img/photography/hassan/",
       "cover": "b43dee235964269.68e2747c847db.webp",
       "images": [
@@ -273,6 +283,7 @@
         "Interiors",
         "Architecture"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/interiors/",
       "cover": "4U6A9213-Edit.webp",
       "images": [
@@ -292,7 +303,7 @@
     },
     {
       "id": "maven",
-      "title": "Maven",
+      "title": "School Time",
       "categories": [
         "Schools"
       ],
@@ -300,6 +311,7 @@
         "Schools",
         "Architecture"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/maven/",
       "cover": "1F3A6680.webp",
       "images": [
@@ -327,6 +339,7 @@
         "Portrait",
         "Studio"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/mostafa/",
       "cover": "cover.webp",
       "images": [
@@ -350,6 +363,7 @@
         "Street Photography",
         "Walk"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/portsaid/",
       "cover": "covers.webp",
       "images": [
@@ -378,6 +392,7 @@
         "Interiors",
         "Architecture"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/redbird/",
       "cover": "853ce581647695.62ab209ab1137.webp",
       "images": [
@@ -401,6 +416,7 @@
         "Schools",
         "Architecture"
       ],
+      "gallery_group": null,
       "path": "/assets/img/photography/schools%20facilities/",
       "cover": "1F3A6537-HDR-Edit.webp",
       "images": [

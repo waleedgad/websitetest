@@ -80,6 +80,9 @@ function buildGallery() {
       categories: [meta.categories[0]],
       allCategories: meta.categories,
 
+      // 🔑 PASS THROUGH MERGE KEY (OPTIONAL)
+      gallery_group: meta.gallery_group || null,
+
       // ✅ URL-safe, root-relative path
       path: `${URL_ROOT}/${urlFolder}/`,
 

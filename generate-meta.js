@@ -74,6 +74,77 @@ Type:
 
     console.log("\n✅ Updating:\n", selectedFolders.join(", "), "\n");
 
+    /* =====================================================
+       UPDATE MENU (NUMERIC)
+       ===================================================== */
+
+    console.log(`
+What do you want to update?
+
+0) All
+1) Title
+2) Categories
+3) Cover
+4) Meta (location / date / description)
+5) Order
+6) Gallery Group (merge)
+7) Sync (files only)
+
+Example: 1,6
+`);
+
+    const updateInput = await ask("Choose options: ");
+
+    const choices = updateInput
+      ? updateInput.split(",").map((c) => c.trim())
+      : ["0"];
+
+    const wants = (n) => choices.includes("0") || choices.includes(n);
+
+    /* =====================================================
+       BATCH PROMPTS (ASK ONCE)
+       ===================================================== */
+
+    let batchTitle = null;
+    let batchCategories = null;
+    let batchGroup = null;
+    let batchMeta = {};
+    let batchOrder = null;
+
+    if (wants("1")) {
+      batchTitle = await ask("Title (enter = keep current): ");
+    }
+
+    if (wants("2")) {
+      const c = await ask(
+        "Categories (comma separated, FIRST is filter): "
+      );
+      batchCategories = c
+        ? c.split(",").map((x) => x.trim()).filter(Boolean)
+        : null;
+    }
+
+    if (wants("6")) {
+      batchGroup = await ask(
+        "Gallery Group (optional — same value = merged gallery): "
+      );
+    }
+
+    if (wants("4")) {
+      batchMeta.location = await ask("Location (optional): ");
+      batchMeta.date = await ask("Date / Year (optional): ");
+      batchMeta.description = await ask("Description (optional): ");
+    }
+
+    if (wants("5")) {
+      const o = await ask("Order (number, optional): ");
+      batchOrder = o !== "" ? Number(o) : null;
+    }
+
+    /* =====================================================
+       APPLY TO EACH FOLDER
+       ===================================================== */
+
     for (const folder of selectedFolders) {
       const folderPath = path.join(ROOT, folder);
       const metaPath = path.join(folderPath, "_meta.json");
@@ -102,55 +173,29 @@ Type:
         continue;
       }
 
-      const updateInput = await ask(
-        "What do you want to update? (all, title, categories, cover, meta, order, sync): "
-      );
-
-      const updateFields = updateInput
-        ? updateInput.toLowerCase().split(",").map((f) => f.trim())
-        : ["all"];
-
-      const wants = (field) =>
-        updateFields.includes("all") || updateFields.includes(field);
-
-      // 🔁 SYNC MODE (FILES ONLY)
-      if (wants("sync")) {
+      // 🔁 SYNC ONLY
+      if (wants("7")) {
         const oldCover = meta.cover;
+        const newCover =
+          images.find((f) => f.toLowerCase().includes("cover")) ||
+          images[0];
 
-        if (oldCover && images.includes(oldCover)) {
-          console.log("✔ Cover still valid:", oldCover);
-        } else {
-          const newCover =
-            images.find((f) => f.toLowerCase().includes("cover")) ||
-            images[0];
+        meta.cover = newCover;
 
-          meta.cover = newCover;
-
-          console.log(
-            `🔁 Cover synced: ${oldCover || "none"} → ${newCover}`
-          );
-        }
+        console.log(
+          `🔁 Cover synced: ${oldCover || "none"} → ${newCover}`
+        );
 
         fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2));
-        console.log("✅ _meta.json synced");
         continue;
       }
 
-      // NORMAL FLOW (unchanged behavior)
-      if (wants("title")) {
-        meta.title =
-          (await ask("Title (enter = keep): ")) || meta.title || folder;
+      if (wants("1") && batchTitle !== null) {
+        meta.title = batchTitle || meta.title || folder;
       }
 
-      if (wants("categories")) {
-        const categoriesInput =
-          (await ask("Categories (comma separated, FIRST is filter): ")) ||
-          (meta.categories || []).join(", ");
-
-        meta.categories = categoriesInput
-          .split(",")
-          .map((c) => c.trim())
-          .filter(Boolean);
+      if (wants("2") && batchCategories) {
+        meta.categories = batchCategories;
       }
 
       if (!meta.categories?.length) {
@@ -158,22 +203,24 @@ Type:
         continue;
       }
 
-      if (wants("meta")) {
-        meta.location =
-          (await ask("Location (optional): ")) || meta.location || "";
-        meta.date = (await ask("Date / Year (optional): ")) || meta.date || "";
+      if (wants("6")) {
+        meta.gallery_group =
+          batchGroup !== null ? batchGroup : meta.gallery_group || "";
+      }
+
+      if (wants("4")) {
+        meta.location = batchMeta.location || meta.location || "";
+        meta.date = batchMeta.date || meta.date || "";
         meta.description =
-          (await ask("Description (optional): ")) ||
-          meta.description ||
-          "";
+          batchMeta.description || meta.description || "";
       }
 
-      if (wants("order")) {
-        const o = await ask("Order (number, optional): ");
-        meta.order = o !== "" ? Number(o) : meta.order ?? null;
+      if (wants("5")) {
+        meta.order =
+          batchOrder !== null ? batchOrder : meta.order ?? null;
       }
 
-      if (wants("cover")) {
+      if (wants("3")) {
         console.log("\n🖼 Images:");
         images.forEach((img, i) => console.log(`${i + 1}) ${img}`));
 
