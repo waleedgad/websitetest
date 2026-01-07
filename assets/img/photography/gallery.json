@@ -25,6 +25,29 @@
       "order": null
     },
     {
+      "id": "animal",
+      "title": "Animal",
+      "categories": [
+        "Portrait"
+      ],
+      "allCategories": [
+        "Portrait",
+        "Studio"
+      ],
+      "path": "/assets/img/photography/animal/",
+      "cover": "4aeac882349691.5d1b08425b894.webp",
+      "images": [
+        "4aeac882349691.5d1b08425b894.webp",
+        "5410cc82349691.5d1b08425bb97.webp",
+        "581e3082349691.5d1b08425b380.webp",
+        "afcb7482349691.5d1b0841d604e.webp"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
       "id": "beverage",
       "title": "Summer Drinks",
       "categories": [
@@ -49,6 +72,43 @@
         "a645d7129442933.68e1c1417da38.webp",
         "b12258129442933.68e1c14626102.webp",
         "db620a129442933.68e1c1426e197.webp"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "bnw",
+      "title": "Black & White",
+      "categories": [
+        "Street Photography"
+      ],
+      "allCategories": [
+        "Street Photography",
+        "Portrait"
+      ],
+      "path": "/assets/img/photography/bnw/",
+      "cover": "09d9ca147379997.62c1ec77de9d5.webp",
+      "images": [
+        "09d9ca147379997.62c1ec77de9d5.webp",
+        "14fd80123311955.60ec3325c6cbe.webp",
+        "1c85b2123311955.60ec3325c9aa3.webp",
+        "1dcfea147379997.62c1c6e773370.webp",
+        "31e197147379997.62c1ec778463b.webp",
+        "35215d123311955.60ec3325c94b0.webp",
+        "43d00c147379997.62c1ec77835d5.webp",
+        "5edded123311955.60ec3325c604d.webp",
+        "73fb5a147379997.62c1c6e773be9.webp",
+        "804a46123311955.60ec3325c6637.webp",
+        "81b7bc147379997.62c1ec7783cd1.webp",
+        "9128cc123311955.60ec3325ca05c.webp",
+        "9535af123311955.60ec3325c8bbe.webp",
+        "b2585f123311955.60ec3325c7a8a.webp",
+        "b85074123311955.60ec3325ca75d.webp",
+        "bab3bb123311955.60ec3325c827a.webp",
+        "cffce5123311955.60ec3325c7405.webp",
+        "f26e22147379997.62c1ee5fb857e.webp"
       ],
       "location": "",
       "date": "",
@@ -128,6 +188,40 @@
       "order": null
     },
     {
+      "id": "cordoba-drinks",
+      "title": "Summer Drinks",
+      "categories": [
+        "Food & Beverage"
+      ],
+      "allCategories": [
+        "Food & Beverage",
+        "E-commerce"
+      ],
+      "path": "/assets/img/photography/cordoba%20drinks/",
+      "cover": "004527124389171.626801f1a0cca.webp",
+      "images": [
+        "004527124389171.626801f1a0cca.webp",
+        "022086124389171.62681c4e2964a.webp",
+        "042f86124389171.626801f1311ec.webp",
+        "05a8fb124389171.626801f131913.webp",
+        "0e742d124389171.626801f12fe8a.webp",
+        "2c8ce6124389171.626801f1a1cbd.webp",
+        "39d2d5124389171.626801f1a1531.webp",
+        "3aa321124389171.626801f19f62c.webp",
+        "456585124389171.62681c4e28c7a.webp",
+        "4ce2e9124389171.626801f133eba.webp",
+        "8bf6d1124389171.62681c4e2914f.webp",
+        "8f8830124389171.626801f1308ea.webp",
+        "aeffc0124389171.62681c4e28549.webp",
+        "dd6473124389171.62681c4e27ff5.webp",
+        "e92db5124389171.626801f1a032d.webp"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
       "id": "gang",
       "title": "The Gang",
       "categories": [
@@ -142,6 +236,27 @@
         "10e245145873775.68e80cfc03969.webp",
         "6d8a13145873775.62a6976fafbfa.webp",
         "f6314e145873775.68e80cfc03183.webp"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "hassan",
+      "title": "Chef Hassan",
+      "categories": [
+        "Portrait"
+      ],
+      "allCategories": [
+        "Portrait",
+        "Studio"
+      ],
+      "path": "/assets/img/photography/hassan/",
+      "cover": "b43dee235964269.68e2747c847db.webp",
+      "images": [
+        "b43dee235964269.68e2747c847db.webp",
+        "cb33cd235964269.68e2747c84e85.webp"
       ],
       "location": "",
       "date": "",
@@ -247,6 +362,29 @@
         "009.webp",
         "010.webp",
         "012.webp"
+      ],
+      "location": "",
+      "date": "",
+      "description": "",
+      "order": null
+    },
+    {
+      "id": "redbird",
+      "title": "Redbird",
+      "categories": [
+        "Interiors"
+      ],
+      "allCategories": [
+        "Interiors",
+        "Architecture"
+      ],
+      "path": "/assets/img/photography/redbird/",
+      "cover": "853ce581647695.62ab209ab1137.webp",
+      "images": [
+        "853ce581647695.62ab209ab1137.webp",
+        "84bbe581647695.5d06331992082.webp",
+        "b3ff1781647695.5d2c99a6848c1.webp",
+        "d885c281647695.5d06331991d30.webp"
       ],
       "location": "",
       "date": "",
