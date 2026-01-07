@@ -49,14 +49,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     col.innerHTML = `
       <div class="project-card is-loading">
         <img
-  src="${p.path + p.cover}"
-  class="project-cover"
-  alt="${p.title}"
-  width="800"
-  height="600"
-  loading="lazy"
-  decoding="async"
->
+          src="${p.path + p.cover}"
+          class="project-cover"
+          alt="${p.title}"
+          width="800"
+          height="600"
+          loading="lazy"
+          decoding="async"
+        >
 
         <div class="lg-items">
           ${galleryAnchors}
@@ -109,32 +109,32 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   /* =========================================
-     LIGHTGALLERY — MOBILE NATIVE BEHAVIOR
+     LIGHTGALLERY — LAZY INIT (PER CARD)
      ========================================= */
 
-  const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-
-  document.querySelectorAll(".project-card").forEach((card, index) => {
+  document.querySelectorAll(".project-card").forEach(card => {
     const gallery = card.querySelector(".lg-items");
-
-    const lgInstance = lightGallery(gallery, {
-      selector: "a",
-      plugins: [lgThumbnail, lgZoom],
-
-      thumbnail: true,
-      zoom: false,
-      counter: true,
-      download: false,
-      fullScreen: false,
-
-      /* 🔒 MOBILE UX */
-      closable: true,        // ❌ tap to close disabled on mobile
-      escKey: true,          // ❌ ESC disabled on mobile
-      swipeToClose: true,         // ✅ swipe down closes
-      hideScrollbar: true         // ✅ stop page scrolling
-    });
+    let lgInstance = null;
 
     card.querySelector(".project-cover").addEventListener("click", () => {
+      if (!lgInstance) {
+        lgInstance = lightGallery(gallery, {
+          selector: "a",
+          plugins: [lgThumbnail, lgZoom],
+
+          thumbnail: true,
+          zoom: false,
+          counter: true,
+          download: false,
+          fullScreen: false,
+
+          closable: true,
+          escKey: true,
+          swipeToClose: true,
+          hideScrollbar: true
+        });
+      }
+
       lgInstance.openGallery(0);
     });
   });
