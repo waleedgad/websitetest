@@ -8,17 +8,16 @@
       ],
       "allCategories": [
         "Schools",
-        "Portrait",
-        "Studio"
+        "Portrait"
       ],
       "path": "/assets/img/photography/Gradphotos/",
-      "cover": "175f4b130333485.617dcb6a90e74.jpg",
+      "cover": "175f4b130333485.617dcb6a90e74.webp",
       "images": [
-        "175f4b130333485.617dcb6a90e74.jpg",
-        "4f5ee6130333485.617dcb6a928d7.jpg",
-        "a7341a130333485.617dcb6a91685.jpg",
-        "a9f915130333485.617dcb6a92f16.jpg",
-        "bcc25f130333485.617dcb6a92441.jpg"
+        "175f4b130333485.617dcb6a90e74.webp",
+        "4f5ee6130333485.617dcb6a928d7.webp",
+        "a7341a130333485.617dcb6a91685.webp",
+        "a9f915130333485.617dcb6a92f16.webp",
+        "bcc25f130333485.617dcb6a92441.webp"
       ],
       "location": "",
       "date": "",
@@ -27,7 +26,7 @@
     },
     {
       "id": "beverage",
-      "title": "Beverages Menu",
+      "title": "Summer Drinks",
       "categories": [
         "Food & Beverage"
       ],
@@ -35,21 +34,21 @@
         "Food & Beverage"
       ],
       "path": "/assets/img/photography/beverage/",
-      "cover": "cover.jpg",
+      "cover": "cover.webp",
       "images": [
-        "cover.jpg",
-        "03a187129442933.68e1c143669cc.jpg",
-        "3c6bd6129442933.68e1c146a38ff.jpg",
-        "484e07129442933.68e1c14ade684.jpg",
-        "4ac622129442933.68e1c14bdd376.jpg",
-        "541516129442933.68e1c1421ffda.jpg",
-        "59f7f7129442933.68e1c149d00a9.jpg",
-        "77d444129442933.68e1c148e7ec4.jpg",
-        "7ff96e129442933.68e1c14a75815.jpg",
-        "a42002129442933.68e1c144d04bb.jpg",
-        "a645d7129442933.68e1c1417da38.jpg",
-        "b12258129442933.68e1c14626102.jpg",
-        "db620a129442933.68e1c1426e197.jpg"
+        "cover.webp",
+        "03a187129442933.68e1c143669cc.webp",
+        "3c6bd6129442933.68e1c146a38ff.webp",
+        "484e07129442933.68e1c14ade684.webp",
+        "4ac622129442933.68e1c14bdd376.webp",
+        "541516129442933.68e1c1421ffda.webp",
+        "59f7f7129442933.68e1c149d00a9.webp",
+        "77d444129442933.68e1c148e7ec4.webp",
+        "7ff96e129442933.68e1c14a75815.webp",
+        "a42002129442933.68e1c144d04bb.webp",
+        "a645d7129442933.68e1c1417da38.webp",
+        "b12258129442933.68e1c14626102.webp",
+        "db620a129442933.68e1c1426e197.webp"
       ],
       "location": "",
       "date": "",
@@ -64,18 +63,18 @@
       ],
       "allCategories": [
         "Product Photography",
-        "E-Ccommerce"
+        "E-commerce"
       ],
       "path": "/assets/img/photography/candles/",
-      "cover": "226c2d234061747.68da176d2cc8b.png",
+      "cover": "226c2d234061747.68da176d2cc8b.webp",
       "images": [
-        "226c2d234061747.68da176d2cc8b.png",
-        "6e4b82234061747.68bcfb227ee93.jpg",
-        "88a8f3234061747.68bcfb227fc3b.jpg",
-        "c0d933234061747.68bcfb227e93c.jpg",
-        "c6705f234061747.68bcfb227d91e.jpg",
-        "cfdf2f234061747.68bcfb227f3d7.jpg",
-        "d2e4db234061747.68bcfb227e101.jpg"
+        "226c2d234061747.68da176d2cc8b.webp",
+        "6e4b82234061747.68bcfb227ee93.webp",
+        "88a8f3234061747.68bcfb227fc3b.webp",
+        "c0d933234061747.68bcfb227e93c.webp",
+        "c6705f234061747.68bcfb227d91e.webp",
+        "cfdf2f234061747.68bcfb227f3d7.webp",
+        "d2e4db234061747.68bcfb227e101.webp"
       ],
       "location": "",
       "date": "",
@@ -92,10 +91,10 @@
         "Portrait"
       ],
       "path": "/assets/img/photography/cellist/",
-      "cover": "60c5d9149524467.62e92d3cd88c9.jpg",
+      "cover": "60c5d9149524467.62e92d3cd88c9.webp",
       "images": [
-        "60c5d9149524467.62e92d3cd88c9.jpg",
-        "868642149524467.62e92d3cd8e3c.jpg"
+        "60c5d9149524467.62e92d3cd88c9.webp",
+        "868642149524467.62e92d3cd8e3c.webp"
       ],
       "location": "",
       "date": "",
@@ -106,22 +105,22 @@
       "id": "chef",
       "title": "Le Chef",
       "categories": [
-        "Portrait"
+        "Portraits"
       ],
       "allCategories": [
-        "Portrait",
+        "Portraits",
         "Studio"
       ],
       "path": "/assets/img/photography/chef/",
-      "cover": "cover.jpg",
+      "cover": "cover.webp",
       "images": [
-        "cover.jpg",
-        "15284c136871431.620181d46ef1b.jpg",
-        "4f5d3e136871431.62558cb88576e.jpg",
-        "77af87136871431.620181d46e9fe.jpg",
-        "8e6a2d136871431.62558cb8866b1.jpg",
-        "9b658b136871431.62558cb886025.jpg",
-        "d3c746136871431.620181d46f3c7.jpg"
+        "cover.webp",
+        "15284c136871431.620181d46ef1b.webp",
+        "4f5d3e136871431.62558cb88576e.webp",
+        "77af87136871431.620181d46e9fe.webp",
+        "8e6a2d136871431.62558cb8866b1.webp",
+        "9b658b136871431.62558cb886025.webp",
+        "d3c746136871431.620181d46f3c7.webp"
       ],
       "location": "",
       "date": "",
@@ -138,11 +137,11 @@
         "Portrait"
       ],
       "path": "/assets/img/photography/gang/",
-      "cover": "10e245145873775.68e80cfc03969.jpg",
+      "cover": "10e245145873775.68e80cfc03969.webp",
       "images": [
-        "10e245145873775.68e80cfc03969.jpg",
-        "6d8a13145873775.62a6976fafbfa.jpg",
-        "f6314e145873775.68e80cfc03183.jpg"
+        "10e245145873775.68e80cfc03969.webp",
+        "6d8a13145873775.62a6976fafbfa.webp",
+        "f6314e145873775.68e80cfc03183.webp"
       ],
       "location": "",
       "date": "",
@@ -153,23 +152,23 @@
       "id": "interiors",
       "title": "Interiors",
       "categories": [
-        "Real estate"
-      ],
-      "allCategories": [
-        "Real estate",
         "Interiors"
       ],
+      "allCategories": [
+        "Interiors",
+        "Architecture"
+      ],
       "path": "/assets/img/photography/interiors/",
-      "cover": "4U6A9213-Edit.jpg",
+      "cover": "4U6A9213-Edit.webp",
       "images": [
-        "4U6A9213-Edit.jpg",
-        "4U6A9220-Edit.jpg",
-        "4U6A9227-Edit.jpg",
-        "4U6A9263-Edit.jpg",
-        "4U6A9306-Edit.jpg",
-        "4U6A9335-Edit-2.jpg",
-        "4U6A9342-Edit-2.jpg",
-        "FV8A3592-Edit.jpg"
+        "4U6A9213-Edit.webp",
+        "4U6A9220-Edit.webp",
+        "4U6A9227-Edit.webp",
+        "4U6A9263-Edit.webp",
+        "4U6A9306-Edit.webp",
+        "4U6A9335-Edit-2.webp",
+        "4U6A9342-Edit-2.webp",
+        "FV8A3592-Edit.webp"
       ],
       "location": "",
       "date": "",
@@ -178,25 +177,25 @@
     },
     {
       "id": "maven",
-      "title": "School Time",
+      "title": "Maven",
       "categories": [
         "Schools"
       ],
       "allCategories": [
         "Schools",
-        "Portrait"
+        "Architecture"
       ],
       "path": "/assets/img/photography/maven/",
-      "cover": "1F3A6680.jpg",
+      "cover": "1F3A6680.webp",
       "images": [
-        "1F3A6680.jpg",
-        "1F3A6716.jpg",
-        "1F3A6720.jpg",
-        "1F3A6777.jpg",
-        "1F3A6795.jpg",
-        "1F3A9789.jpg",
-        "1F3A9807.jpg",
-        "1F3A9829.jpg"
+        "1F3A6680.webp",
+        "1F3A6716.webp",
+        "1F3A6720.webp",
+        "1F3A6777.webp",
+        "1F3A6795.webp",
+        "1F3A9789.webp",
+        "1F3A9807.webp",
+        "1F3A9829.webp"
       ],
       "location": "",
       "date": "",
@@ -205,7 +204,7 @@
     },
     {
       "id": "mostafa",
-      "title": "Creativity Hypothesis",
+      "title": "Creativity Hypnothesis",
       "categories": [
         "Portrait"
       ],
@@ -214,12 +213,12 @@
         "Studio"
       ],
       "path": "/assets/img/photography/mostafa/",
-      "cover": "cover.jpg",
+      "cover": "cover.webp",
       "images": [
-        "cover.jpg",
-        "1a3109171491979.646f6945af324.jpg",
-        "8d5b7e171491979.64711e6a08232.jpg",
-        "e90d57171491979.646f6945b06d8.jpg"
+        "cover.webp",
+        "1a3109171491979.646f6945af324.webp",
+        "8d5b7e171491979.64711e6a08232.webp",
+        "e90d57171491979.646f6945b06d8.webp"
       ],
       "location": "",
       "date": "",
@@ -234,20 +233,20 @@
       ],
       "allCategories": [
         "Street Photography",
-        "Walks"
+        "Walk"
       ],
       "path": "/assets/img/photography/portsaid/",
-      "cover": "covers.jpg",
+      "cover": "covers.webp",
       "images": [
-        "covers.jpg",
-        "003.jpg",
-        "004.jpg",
-        "005.jpg",
-        "006.jpg",
-        "008.jpg",
-        "009.jpg",
-        "010.jpg",
-        "012.jpg"
+        "covers.webp",
+        "003.webp",
+        "004.webp",
+        "005.webp",
+        "006.webp",
+        "008.webp",
+        "009.webp",
+        "010.webp",
+        "012.webp"
       ],
       "location": "",
       "date": "",
@@ -265,26 +264,26 @@
         "Architecture"
       ],
       "path": "/assets/img/photography/schools%20facilities/",
-      "cover": "1F3A6537-HDR-Edit.jpg",
+      "cover": "1F3A6537-HDR-Edit.webp",
       "images": [
-        "1F3A6537-HDR-Edit.jpg",
-        "1F3A6580-HDR-Edit-2.jpg",
-        "1F3A6635-HDR-Edit.jpg",
-        "1F3A6860-HDR.jpg",
-        "1F3A8062-HDR-Edit.jpg",
-        "2cdf31130333485.62a0daf9dbb30.jpg",
-        "3d948f130333485.617dcb6a31119.jpg",
-        "8dce43145386549.629de42cc8ec2.jpg",
-        "9eb0c1145386549.629dee1c8851e.jpg",
-        "Firefly_Flux_Enhance this architectural photo of a modern international school to look clean, real 518751.png",
-        "c7c381145386549.629de42cc7af0.jpg",
-        "cc9bb6195006171.68e135e2e2197.jpg",
-        "cf8c6c130333485.617dcb6a2fd3d.jpg",
-        "db57e6145386549.629de42c0a8d7.jpg",
-        "dfbd2f130333485.62a35df43f999.jpg",
-        "playgrounds-11.jpg",
-        "playgrounds-13.jpg",
-        "playgrounds-14.jpg"
+        "1F3A6537-HDR-Edit.webp",
+        "1F3A6580-HDR-Edit-2.webp",
+        "1F3A6635-HDR-Edit.webp",
+        "1F3A6860-HDR.webp",
+        "1F3A8062-HDR-Edit.webp",
+        "2cdf31130333485.62a0daf9dbb30.webp",
+        "3d948f130333485.617dcb6a31119.webp",
+        "8dce43145386549.629de42cc8ec2.webp",
+        "9eb0c1145386549.629dee1c8851e.webp",
+        "Firefly_Flux_Enhance this architectural photo of a modern international school to look clean, real 518751.webp",
+        "c7c381145386549.629de42cc7af0.webp",
+        "cc9bb6195006171.68e135e2e2197.webp",
+        "cf8c6c130333485.617dcb6a2fd3d.webp",
+        "db57e6145386549.629de42c0a8d7.webp",
+        "dfbd2f130333485.62a35df43f999.webp",
+        "playgrounds-11.webp",
+        "playgrounds-13.webp",
+        "playgrounds-14.webp"
       ],
       "location": "",
       "date": "",
