@@ -30,7 +30,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   /* ===============================
      RENDER HELPERS
      =============================== */
+  let cardIndex = 0; // 👈 track first rendered card (LCP)
+
   const createCard = p => {
+    const isLCP = cardIndex === 0;
+    cardIndex++;
+
     const col = document.createElement("div");
     col.className = `col-lg-4 col-md-6 gallery-item ${slug(p.categories[0])}`;
 
@@ -61,9 +66,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           alt="${p.title}"
           width="800"
           height="600"
-          loading="lazy"
+          loading="${isLCP ? "eager" : "lazy"}"
           decoding="async"
-          fetchpriority="low"
+          fetchpriority="${isLCP ? "high" : "low"}"
         >
 
         <div class="lg-items">
